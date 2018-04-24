@@ -7,18 +7,17 @@
     <script language="javascript">
     $(document).ready(function(){
         $.ajax({
-            url: '/getToyById/1',
+            url: '/rest/getToyById/1',
             type: 'get',
             success: function(data){
-                $('.toyName').text(data.toyName);
+                $('.toyName').text(data.name);
                 $('.toyBrand').text(data.brand);
                 $('.toyGender').text(data.gender);
                 $('.toyAge').text(data.age);
                 $('.toyPrice').text(data.price);
                 $('.toyShipping').text(data.shippingMethod);
                 $('.toyStock').text(data.stockStatus);
-                $('.toyQty').val(data.qty);
-                $('.toyImg').attr('src', data.toyImg);
+                $('.toyImg').attr('src', data.toy_img);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var errorMsg = 'Ajax request failed: ' + xhr.responseText;
