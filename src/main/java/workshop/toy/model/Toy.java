@@ -1,14 +1,26 @@
 package workshop.toy.model;
 
+import java.math.BigDecimal;
+
 public class Toy {
+    private BigDecimal toyId;
     private String toyName;
     private String brand;
     private String gender;
     private String age;
-    private String price;
+    private BigDecimal price;
     private String shippingMethod;
     private String stockStatus;
-    private String qty;
+    private BigDecimal qty;
+    private String toyImg;
+
+    public BigDecimal getToyId() {
+        return toyId;
+    }
+
+    public void setToyId(BigDecimal toyId) {
+        this.toyId = toyId;
+    }
 
     public String getToyName() {
         return toyName;
@@ -42,11 +54,11 @@ public class Toy {
         this.age = age;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -66,11 +78,19 @@ public class Toy {
         this.stockStatus = stockStatus;
     }
 
-    public String getQty() {
+    public BigDecimal getQty() {
         return qty;
     }
 
-    public void setQty(String qty) {
+    public void setQty(BigDecimal qty) {
         this.qty = qty;
+    }
+
+    public String getToyImg() {
+        return toyImg;
+    }
+
+    public void setToyImg(String toyImg) {
+        this.toyImg = toyImg;
     }
 }

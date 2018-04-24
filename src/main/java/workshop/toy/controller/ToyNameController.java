@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import workshop.toy.model.Toy;
 
+import java.math.BigDecimal;
+
 @RestController
 public class ToyNameController {
 
@@ -17,9 +19,11 @@ public class ToyNameController {
         toy.setBrand("Test Brand");
         toy.setGender("Neutral");
         toy.setAge("Baby");
-        toy.setPrice("10.15");
+        toy.setPrice(new BigDecimal("10.15"));
         toy.setShippingMethod("Cash on Delivery");
         toy.setStockStatus("In Stock");
+        toy.setQty(new BigDecimal("3"));
+        toy.setToyImg("/img/peacock.jpg");
         return toy;
     }
 

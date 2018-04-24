@@ -11,6 +11,14 @@
             type: 'get',
             success: function(data){
                 $('.toyName').text(data.toyName);
+                $('.toyBrand').text(data.brand);
+                $('.toyGender').text(data.gender);
+                $('.toyAge').text(data.age);
+                $('.toyPrice').text(data.price);
+                $('.toyShipping').text(data.shippingMethod);
+                $('.toyStock').text(data.stockStatus);
+                $('.toyQty').val(data.qty);
+                $('.toyImg').attr('src', data.toyImg);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 var errorMsg = 'Ajax request failed: ' + xhr.responseText;
@@ -26,7 +34,7 @@
         <td colspan="3"><h1><div class="toyName"></div></h1></td>
     </tr>
     <tr>
-        <td rowspan="7" width="50%"><img src="/img/peacock.jpg" height="400" width="300"></td>
+        <td rowspan="7" width="50%"><img class="toyImg" height="400" width="300"></td>
         <td><h3>Brand</h3></td>
         <td><div class="toyBrand"></div></td>
     </tr>
@@ -52,7 +60,7 @@
     </tr>
     <tr>
         <td><h3>Quantity</h3></td>
-        <td><select name="Qty">
+        <td><select name="Qty" class="toyQty">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
