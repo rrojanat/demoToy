@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface AgeRepo extends CrudRepository<Combo,Integer> {
 
-    @Query("select age_id as value , description as text from age")
+    @Query("select age_id as value , description as text from age order by age_id")
     List<Combo> searchAgeCombo();
 }
