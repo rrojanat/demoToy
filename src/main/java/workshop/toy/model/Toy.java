@@ -3,8 +3,8 @@ package workshop.toy.model;
 import java.math.BigDecimal;
 
 public class Toy {
-    private BigDecimal toyId;
-    private String toyName;
+    private BigDecimal toy_id;
+    private String name;
     private String brand;
     private String gender;
     private String age;
@@ -12,22 +12,22 @@ public class Toy {
     private String shippingMethod;
     private String stockStatus;
     private BigDecimal qty;
-    private String toyImg;
+    private String toy_img;
 
     public BigDecimal getToyId() {
-        return toyId;
+        return toy_id;
     }
 
     public void setToyId(BigDecimal toyId) {
-        this.toyId = toyId;
+        this.toy_id = toyId;
     }
 
-    public String getToyName() {
-        return toyName;
+    public String getName() {
+        return name;
     }
 
-    public void setToyName(String toyName) {
-        this.toyName = toyName;
+    public void setName(String toyName) {
+        this.name = toyName;
     }
 
     public String getBrand() {
@@ -87,10 +87,10 @@ public class Toy {
     }
 
     public String getToyImg() {
-        return toyImg;
+        return toy_img;
     }
 
     public void setToyImg(String toyImg) {
-        this.toyImg = toyImg;
+        this.toy_img = toyImg;
     }
 }
