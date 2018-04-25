@@ -37,14 +37,14 @@ public class CartController {
         return cartDetailRepo.findCartDetailByCartId(id);
     }
 
-    @PutMapping("/rest/cart")
+    @PutMapping("/cart")
     @ResponseBody
     public Cart createCart() {
         Cart cart = new Cart();
         return cartRepo.save(cart);
     }
 
-    @PutMapping("/rest/cartdetail")
+    @PutMapping("/cart/detail")
     @ResponseBody
     public CartDetail addToCart(@RequestBody CartDetail cartDetail) {
         return cartDetailRepo.save(cartDetail);
