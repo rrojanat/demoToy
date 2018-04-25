@@ -34,19 +34,26 @@ public class ComboControllerTest {
 
 
     @Test
-    public void test_get_age_combo_success() throws Exception {
+    public void testGetAgeComboSuccess() throws Exception {
         List<Combo> combos = new ArrayList<>();
-        combos.add(new Combo("1", "C1"));
-        combos.add(new Combo("1", "C1"));
+        combos.add(new Combo("1", "Baby"));
+        combos.add(new Combo("2", "Toddler"));
         given(ageRepo.searchAgeCombo())
                 .willReturn(combos);
-        ResponseEntity<List> response = restTemplate.getForEntity("/rest/getAgeCombo", List.class);
+        ResponseEntity<List> response = restTemplate.getForEntity("/rest/agecombo", List.class);
         assertEquals(200, response.getStatusCode().value());
         assertEquals(2, response.getBody().size());
-        //assertEquals(combos, (List<Combo>)response.getBody());
     }
 
     @Test
-    public void getGenderCombo() {
+    public void testGetGenderComboSuccess() {
+        List<Combo> combos = new ArrayList<>();
+        combos.add(new Combo("1", "Female"));
+        combos.add(new Combo("2", "Male"));
+        given(genderRepo.searchGenderCombo())
+                .willReturn(combos);
+        ResponseEntity<List> response = restTemplate.getForEntity("/rest/gendercombo", List.class);
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(2, response.getBody().size());
     }
 }

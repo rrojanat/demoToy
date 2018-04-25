@@ -3,7 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>SearchToy</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script language="javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: '/rest/getAgeCombo/',
+            type: 'get',
+            success: function(data){
+            var mockdata = [
+                {"age_id":1,"description":"baby"},
+                {"age_id":2,"description":"0-5 yrs"},
+                {"age_id":3,"description":"6-8 yrs"},
+                {"age_id":4,"description":"> 8 yrs"}
+             ];
+              console.log(mockdata);
+                for(i=0;i< mockdata.length;i++){
+                  $.each( mockdata[i], function( key, value ) {
+                    console.log( key + ": " + value );
+                  });
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                $('#content').html(errorMsg);
+            }
+        });
+    });
+
+<!--$(document).ready(function(){-->
+     <!--var mockdata = [-->
+        <!--{"age_id":1,"description":"baby"},-->
+        <!--{"age_id":2,"description":"0-5 yrs"},-->
+        <!--{"age_id":3,"description":"6-8 yrs"},-->
+        <!--{"age_id":4,"description":"> 8 yrs"}-->
+     <!--];-->
+     <!--console.log(mockdata);-->
+
+     <!--var $select = $('#ageCombo');-->
+     <!--for(i=0 ;i<mockdata.length ;i++){-->
+       <!--$select.append('<option value=' + mockdata[i].age_id + '>' + mockdata[i].description + '</option>');-->
+     <!--}-->
+<!--});-->
+
+</script>
+
 </head>
 <body>
 
@@ -12,19 +57,17 @@
 </h1>
 
 <label for="age">Select Age:</label>
-<select name="age" id="age">
-    <option value="1" >Toy1</option>
+<select class="ageCombo" id="ageCombo"></select>
+
+<label for="gender">Select Gender:</label>
+<select name="gender" id="gender">
+    <option value="1">Male</option>
+    <option value="2">Female</option>
+    <option value="3">Neutral</option>
 </select>
 
-    <label for="gender">Select Gender:</label>
-    <select name="gender" id="gender">
-        <option value="1" >Male</option>
-        <option value="2" >Female</option>
-        <option value="3" >Neutral</option>
-    </select>
 
-
-<input type="button" name = "searchButton" value="Search">
+<input type="button" name="searchButton" value="Search">
 
 
 <p>
@@ -32,11 +75,11 @@
 </p>
 <div>
     <table border=1>
-        <thead >
-            <td>Toy ID</td>
-        <td> Name </td>
-        <td> Gender </td>
-        <td> Age </td>
+        <thead>
+        <td>Toy ID</td>
+        <td> Name</td>
+        <td> Gender</td>
+        <td> Age</td>
         <td> Availability</td>
         </thead>
         <tbody>
