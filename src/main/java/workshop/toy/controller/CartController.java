@@ -20,6 +20,9 @@ public class CartController {
     @Autowired
     private CartDetailRepo cartDetailRepo;
 
+    public CartController() {
+    }
+
     public CartController(CartDetailRepo cartDetailRepo) {
         this.cartDetailRepo = cartDetailRepo;
     }
