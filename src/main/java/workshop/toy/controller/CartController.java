@@ -20,6 +20,14 @@ public class CartController {
     @Autowired
     CartDetailRepo cartDetailRepo;
 
+    public CartController(CartDetailRepo cartDetailRepo) {
+        this.cartDetailRepo = cartDetailRepo;
+    }
+
+    public CartController(CartRepo cartRepo) {
+        this.cartRepo = cartRepo;
+    }
+
     @GetMapping(value = "/cart/{id}/detail" ,produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<CartDetail> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
