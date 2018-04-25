@@ -11,11 +11,11 @@ import workshop.toy.repo.ToyRepo;
 import java.math.BigDecimal;
 
 @RestController
-public class ToyNameController {
+public class ToyController {
     @Autowired
     private ToyRepo toyRepo;
 
-    @GetMapping("/rest/getToyById/{toyId}")
+    @GetMapping("/rest/toy/{toyId}")
     @ResponseBody
     public Toy getToy(@PathVariable String toyId) {
         return toyRepo.getToyById(new BigDecimal(toyId));
