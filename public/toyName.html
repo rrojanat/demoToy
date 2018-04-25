@@ -9,14 +9,17 @@
     <script language="javascript">
     $(document).ready(function(){
 
+        var toyId = "6";
+
         $('#AddToCart').click(function() {
             var cartId = $('#cartId').value;
+            var cartDetail;
             if(cartId == null) {
                 $.ajax({
                     url: '/rest/cart',
                     type: 'put',
                     success: function(data){
-                        alert(data.cartId);
+                        cartDetail.cartId = cartId;
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         var errorMsg = 'Ajax request failed: ' + xhr.responseText;
@@ -25,8 +28,6 @@
                 });
             }
         });
-
-        var toyId = "6";
 
         $.ajax({
             url: '/rest/toy/' + toyId,

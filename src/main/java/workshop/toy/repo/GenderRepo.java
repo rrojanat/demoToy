@@ -7,6 +7,6 @@ import org.springframework.data.jdbc.repository.query.Query;
 import java.util.List;
 
 public interface GenderRepo extends CrudRepository<Combo,Integer> {
-    @Query("select genderId as value , description as text from gender order by genderId")
+    @Query("select genderId as value , description as text from Gender order by genderId")
     List<Combo> searchGenderCombo();
 }

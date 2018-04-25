@@ -18,7 +18,7 @@ public class CartController {
     private CartRepo cartRepo;
 
     @Autowired
-    CartDetailRepo cartDetailRepo;
+    private CartDetailRepo cartDetailRepo;
 
     @GetMapping(value = "/cart/{id}/detail" ,produces = "application/json; charset=UTF-8")
     @ResponseBody
@@ -31,6 +31,12 @@ public class CartController {
     public Cart createCart() {
         Cart cart = new Cart();
         return cartRepo.save(cart);
+    }
+
+    @PutMapping("/rest/cartdetail")
+    @ResponseBody
+    public CartDetail addToCart(@RequestBody CartDetail cartDetail) {
+        return cartDetailRepo.save(cartDetail);
     }
 }
 
