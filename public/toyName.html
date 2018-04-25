@@ -10,7 +10,20 @@
     $(document).ready(function(){
 
         $('#AddToCart').click(function() {
-            alert( "Handler for .click() called." );
+            var cartId = $('#cartId').value;
+            if(cartId == null) {
+                $.ajax({
+                    url: '/rest/cart',
+                    type: 'put',
+                    success: function(data){
+                        alert(data.cartId);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                        $('#content').html(errorMsg);
+                    }
+                });
+            }
         });
 
         var toyId = "6";
@@ -37,6 +50,7 @@
     </script>
 </head>
 <body>
+<input type="hidden" id="cartId" value="">
 <table>
     <tr>
         <td colspan="3"><h1><div class="toyName"></div></h1></td>

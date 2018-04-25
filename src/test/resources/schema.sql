@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS toy;
 DROP TABLE IF EXISTS gender;
 DROP TABLE IF EXISTS age;
-CREATE TABLE IF NOT EXISTS toy (toy_id INTEGER PRIMARY KEY, name VARCHAR(100), gender_id INTEGER, age_id INTEGER, price DECIMAL(7, 2), brand VARCHAR(20), qty INTEGER, toy_img VARCHAR(200));
-CREATE TABLE IF NOT EXISTS gender (gender_id INTEGER PRIMARY KEY, description VARCHAR(20));
-CREATE TABLE IF NOT EXISTS age (age_id INTEGER PRIMARY KEY, description VARCHAR(20));
+CREATE TABLE IF NOT EXISTS toy (toyId INTEGER PRIMARY KEY, name VARCHAR(100), genderId INTEGER, ageId INTEGER, price DECIMAL(7, 2), brand VARCHAR(20), qty INTEGER, toyImg VARCHAR(200));
+CREATE TABLE IF NOT EXISTS gender (genderId INTEGER PRIMARY KEY, description VARCHAR(20));
+CREATE TABLE IF NOT EXISTS age (ageId INTEGER PRIMARY KEY, description VARCHAR(20));
 INSERT INTO toy values(1, 'Balance Training Bicycle', 3, 3, 119.95, 'SportsFun', 20, '/img/1.jpg');
 INSERT INTO toy values(2, '43 Piece Dinner Set', 1, 3, 12.95, 'CoolKidz', 20, '/img/2.jpg');
 INSERT INTO gender values(1, 'Female');
