@@ -4,12 +4,29 @@
     <meta charset="UTF-8">
     <title>Toy Name</title>
     <link rel="stylesheet" href="/css/semantic.min.css">
-    <script src="/script/semantic.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/script/semantic.min.js"></script>
     <script language="javascript">
     $(document).ready(function(){
 
-        var toyId = "20";
+        $('#AddToCart').click(function() {
+            var cartId = $('#cartId').value;
+            if(cartId == null) {
+                $.ajax({
+                    url: '/rest/cart',
+                    type: 'put',
+                    success: function(data){
+                        alert(data.cartId);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                        $('#content').html(errorMsg);
+                    }
+                });
+            }
+        });
+
+        var toyId = "6";
 
         $.ajax({
             url: '/rest/toy/' + toyId,
@@ -33,6 +50,7 @@
     </script>
 </head>
 <body>
+<input type="hidden" id="cartId" value="">
 <table>
     <tr>
         <td colspan="3"><h1><div class="toyName"></div></h1></td>
@@ -73,7 +91,10 @@
             </select>
         </td>
     </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan="2"><button class="ui primary button" id="AddToCart">Add to cart</button></td>
+    </tr>
 </table>
-<input type="button" name="AddToCart" value="Add to cart">
 </body>
 </html>
