@@ -9,7 +9,7 @@
     <script language="javascript">
     $(document).ready(function(){
         $.ajax({
-            url: '/rest/getAgeCombo/',
+            url: '/rest/agecombo',
             type: 'get',
             success: function(data){
             console.log(data);
@@ -24,7 +24,7 @@
             }
         });
         $.ajax({
-            url: '/rest/getGenderCombo/',
+            url: '/rest/gendercombo',
             type: 'get',
             success: function(data){
             console.log(data);
@@ -40,11 +40,7 @@
         });
     });
 
-
-
-
 </script>
-
 </head>
 <body>
 
