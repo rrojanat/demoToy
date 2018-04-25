@@ -12,14 +12,34 @@
         var toyId = "6";
 
         $('#AddToCart').click(function() {
-            var cartId = $('#cartId').value;
-            var cartDetail;
-            if(cartId == null) {
+            alert($('#cartId').val());
+            var cartId = $('#cartId').val();
+            var cartDetail = {};
+            if(cartId == null || cartId == '') {
                 $.ajax({
                     url: '/rest/cart',
                     type: 'put',
                     success: function(data){
-                        cartDetail.cartId = cartId;
+                        cartDetail.cartId = data.cartId;
+                        $('#cartId').val(data.cartId);
+                        cartDetail.toyId = toyId;
+                        cartDetail.qty = $('.toyQty option:selected').val();
+
+                        var cartDetailData = JSON.stringify(cartDetail);
+
+                        $.ajax({
+                            url: '/rest/cart/detail',
+                            type: 'put',
+                            data: cartDetailData,
+                            contentType: 'application/json; charset=utf-8',
+                            success: function(data){
+                                alert(data.cartDetailId);
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                                $('#content').html(errorMsg);
+                            }
+                        });
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         var errorMsg = 'Ajax request failed: ' + xhr.responseText;
@@ -40,6 +60,7 @@
                 $('.toyPrice').text(data.price);
                 $('.toyShipping').text(data.shippingMethod);
                 $('.toyStock').text(data.stockStatus);
+                $('.toyStockQty').text(data.qty);
                 $('.toyImg').attr('src', data.toyImg);
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -57,7 +78,7 @@
         <td colspan="3"><h1><div class="toyName"></div></h1></td>
     </tr>
     <tr>
-        <td rowspan="7" width="50%"><img class="toyImg" height="400" width="300"></td>
+        <td rowspan="8" width="50%"><img class="toyImg" height="400" width="300"></td>
         <td><h3>Brand</h3></td>
         <td><div class="toyBrand"></div></td>
     </tr>
@@ -80,6 +101,10 @@
     <tr>
         <td><h3>Stock Status</h3></td>
         <td><div class="toyStock"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Stock Qty</h3></td>
+        <td><div class="toyStockQty"></div></td>
     </tr>
     <tr>
         <td><h3>Quantity</h3></td>

@@ -2,12 +2,14 @@ package workshop.toy.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 
 @JsonIgnoreProperties
 public class CartDetail {
     @JsonView
+    @Id
     private BigDecimal cartDetailId;
     @JsonView
     private BigDecimal cartId;

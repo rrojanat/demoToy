@@ -20,20 +20,31 @@ public class CartController {
     @Autowired
     private CartDetailRepo cartDetailRepo;
 
+    public CartController() {
+    }
+
+    public CartController(CartDetailRepo cartDetailRepo) {
+        this.cartDetailRepo = cartDetailRepo;
+    }
+
+    public CartController(CartRepo cartRepo) {
+        this.cartRepo = cartRepo;
+    }
+
     @GetMapping(value = "/cart/{id}/detail" ,produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<CartDetail> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
         return cartDetailRepo.findCartDetailByCartId(id);
     }
 
-    @PutMapping("/rest/cart")
+    @PutMapping("/cart")
     @ResponseBody
     public Cart createCart() {
         Cart cart = new Cart();
         return cartRepo.save(cart);
     }
 
-    @PutMapping("/rest/cartdetail")
+    @PutMapping("/cart/detail")
     @ResponseBody
     public CartDetail addToCart(@RequestBody CartDetail cartDetail) {
         return cartDetailRepo.save(cartDetail);
