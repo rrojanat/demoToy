@@ -18,7 +18,7 @@ public class CartController {
     private CartRepo cartRepo;
 
     @Autowired
-    CartDetailRepo cartDetailRepo;
+    private CartDetailRepo cartDetailRepo;
 
     public CartController(CartDetailRepo cartDetailRepo) {
         this.cartDetailRepo = cartDetailRepo;
@@ -39,6 +39,12 @@ public class CartController {
     public Cart createCart() {
         Cart cart = new Cart();
         return cartRepo.save(cart);
+    }
+
+    @PutMapping("/rest/cartdetail")
+    @ResponseBody
+    public CartDetail addToCart(@RequestBody CartDetail cartDetail) {
+        return cartDetailRepo.save(cartDetail);
     }
 }
 
