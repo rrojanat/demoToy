@@ -2,9 +2,10 @@ package workshop.toy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import workshop.toy.model.Cart;
 import workshop.toy.model.CartDetail;
-import workshop.toy.model.Combo;
 import workshop.toy.repo.CartDetailRepo;
+import workshop.toy.repo.CartRepo;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.List;
 public class CartController {
 
     @Autowired
+    private CartRepo cartRepo;
+
+    @Autowired
     CartDetailRepo cartDetailRepo;
 
     @GetMapping(value = "/cart/{id}/detail" ,produces = "application/json; charset=UTF-8")
@@ -21,6 +25,12 @@ public class CartController {
     public List<CartDetail> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
         return cartDetailRepo.findCartDetailByCartId(id);
     }
-}
 
+    @PutMapping("/rest/cart")
+    @ResponseBody
+    public Cart createCart() {
+        Cart cart = new Cart();
+        return cartRepo.save(cart);
+    }
+}
 
