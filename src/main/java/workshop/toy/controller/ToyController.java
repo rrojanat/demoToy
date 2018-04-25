@@ -25,7 +25,7 @@ public class ToyController {
     public List<Toy> searchToy(@RequestBody ToyCriteria toyCriteria) {
         String ageId = toyCriteria.getSearchAge();
         String genderId = toyCriteria.getSearchGender();
-        if (isEmptyString(ageId) && isEmptyString(genderId)) {
+        if (!isEmptyString(ageId) && !isEmptyString(genderId)) {
             return toyRepo.searchToyByAgeAndGender(ageId, genderId);
         } else if (isEmptyString(ageId) && !isEmptyString(genderId)) {
             return toyRepo.searchToyByGender(genderId);
