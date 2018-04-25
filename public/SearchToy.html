@@ -39,7 +39,6 @@
             }
         });
     });
-
 </script>
 </head>
 <body>
@@ -54,9 +53,30 @@
 <label for="genderCombo">Select Gender:</label>
 <select class="genderCombo"></select>
 
+<input type="button" id="searchButton" value="Search">
 
-<input type="button" name="searchButton" value="Search">
-
+<script language="JavaScript">
+    $("#searchButton").click(function() {
+    var criteria = {};
+    criteria.searchAge = $('.ageCombo').val();
+    criteria.searchGender = $('.genderCombo').val();
+    console.log(criteria);
+        $.ajax({
+            url: '/rest/toy',
+            type: 'post',
+            contentType: 'application/json; charset=UTF-8',
+            data: JSON.stringify(criteria),
+            success: function(data){
+                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+                var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                $('#content').html(errorMsg);
+            }
+        });
+    });
+</script>
 
 <p>
     X toy found
