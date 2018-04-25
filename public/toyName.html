@@ -1,11 +1,6 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
   <link rel="dns-prefetch" href="https://assets-cdn.github.com">
@@ -963,6 +958,79 @@
         <td id="L77" class="blob-num js-line-number" data-line-number="77"></td>
         <td id="LC77" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">html</span>&gt;</td>
       </tr>
+=======
+<head>
+    <meta charset="UTF-8">
+    <title>Toy Name</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script language="javascript">
+    $(document).ready(function(){
+
+        var toyId = "20";
+
+        $.ajax({
+            url: '/rest/getToyById/' + toyId,
+            type: 'get',
+            success: function(data){
+                $('.toyName').text(data.name);
+                $('.toyBrand').text(data.brand);
+                $('.toyGender').text(data.gender);
+                $('.toyAge').text(data.age);
+                $('.toyPrice').text(data.price);
+                $('.toyShipping').text(data.shippingMethod);
+                $('.toyStock').text(data.stockStatus);
+                $('.toyImg').attr('src', data.toyImg);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                $('#content').html(errorMsg);
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="3"><h1><div class="toyName"></div></h1></td>
+    </tr>
+    <tr>
+        <td rowspan="7" width="50%"><img class="toyImg" height="400" width="300"></td>
+        <td><h3>Brand</h3></td>
+        <td><div class="toyBrand"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Gender</h3></td>
+        <td><div class="toyGender"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Age</h3></td>
+        <td><div class="toyAge"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Price</h3></td>
+        <td><div class="toyPrice"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Shipping Method</h3></td>
+        <td><div class="toyShipping"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Stock Status</h3></td>
+        <td><div class="toyStock"></div></td>
+    </tr>
+    <tr>
+        <td><h3>Quantity</h3></td>
+        <td><select name="Qty" class="toyQty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </td>
+    </tr>
+>>>>>>> 21a75a94e98343d3d6b3c38f1ba80557212b054f
 </table>
 
   <div class="BlobToolbar position-absolute js-file-line-actions dropdown js-menu-container js-select-menu d-none" aria-hidden="true">
