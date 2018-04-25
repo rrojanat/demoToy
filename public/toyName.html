@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>Toy Name</title>
     <link rel="stylesheet" href="/css/semantic.min.css">
-    <script src="/script/semantic.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/script/semantic.min.js"></script>
     <script language="javascript">
     $(document).ready(function(){
+
+        $('#AddToCart').click(function() {
+            alert( "Handler for .click() called." );
+        });
 
         var toyId = "20";
 
@@ -73,7 +77,10 @@
             </select>
         </td>
     </tr>
+    <tr>
+        <td></td>
+        <td colspan="2"><button class="ui primary button" id="AddToCart">Add to cart</button></td>
+    </tr>
 </table>
-<input type="button" name="AddToCart" value="Add to cart">
 </body>
 </html>

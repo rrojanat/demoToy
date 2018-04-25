@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS toy;
+DROP TABLE IF EXISTS gender;
+DROP TABLE IF EXISTS age;
+CREATE TABLE IF NOT EXISTS toy (toy_id INTEGER PRIMARY KEY, name VARCHAR(100), gender_id INTEGER, age_id INTEGER, price DECIMAL(7, 2), brand VARCHAR(20), qty INTEGER, toy_img VARCHAR(200));
+CREATE TABLE IF NOT EXISTS gender (gender_id INTEGER PRIMARY KEY, description VARCHAR(20));
+CREATE TABLE IF NOT EXISTS age (age_id INTEGER PRIMARY KEY, description VARCHAR(20));
+INSERT INTO toy values(1, 'Balance Training Bicycle', 3, 3, 119.95, 'SportsFun', 20, '/img/1.jpg');
+INSERT INTO toy values(2, '43 Piece Dinner Set', 1, 3, 12.95, 'CoolKidz', 20, '/img/2.jpg');
+INSERT INTO gender values(1, 'Female');
+INSERT INTO gender values(2, 'Male');
+INSERT INTO gender values(3, 'Neutral');
+INSERT INTO age values(1, 'Baby');
+INSERT INTO age values(2, 'Toddler');
+INSERT INTO age values(3, '3_to_5');
+INSERT INTO age values(4, '6_to_8');
+INSERT INTO age values(5, 'Over8');
