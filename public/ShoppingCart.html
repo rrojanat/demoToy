@@ -3,112 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>ShoppingCart</title>
-
-
-    <style>
-* {
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Style the top navigation bar */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-}
-
-/* Style the topnav links */
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Style the content */
-.content {
-    background-color: #990000;
-    padding: 10px;
-    /*height: 80px; /* Should be removed. Only for demonstration */*/
-    color=#ffffff
-}
-
-/* Style the footer */
-.footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-}
-
-#toy {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-
-#toy td, #toy th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#toy tr:nth-child(even){background-color: #ffe6e6;}
-
-#toy tr:hover {background-color: #ddd;}
-
-#toy th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    /*text-align: left;*/
-    background-color: #cc0000;
-    color: white;
-}
-
-
-* {
-    box-sizing: border-box;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-#subtotal {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 100%;
-}
-</style>
-    <div class="content">
-        <h2 > <font color="#ffffff">Shopping Cart</font></h2>
-    </div>
+    <link rel="stylesheet" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="/css/toy.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/script/semantic.min.js"></script>
 </head>
 
 <body>
-
-<table id="toy">
+<div id="shoppingCart" style="width:100%">
+<div class="content">
+    <h2><font color="#ffffff">Shopping Cart</font></h2>
+</div>
+<table class="toy">
     <tr>
         <th align="left">Items</th>
         <th>Quantity</th>
@@ -116,42 +22,35 @@ body {
     </tr>
     <tr>
         <td>
-            <div><label for="toyname">Toy Name by Brand</label></div>
-            <div><label for="gender"> Gender</label>
-            <label for="age">Age</label>
-                <div >
-                    <label for="availibility"> In Stock / Out of Stock</label>
-                </div>
-                <div><label for="delete"> Delete</label></div>
-            </div>
-
+            <div>Toy Name by Brand</div>
+            <div>Gender</div>
+            <div>Age</div>
+            <div>In Stock / Out of Stock</div>
+            <div><button class="ui button" name="Delete">Delete</button></div>
         </td>
         <td>
-
-            <label for="quantity" > </label>
-            <select name="quantity" id="qty" >
+            <label for="3toyQty" > </label>
+            <select name="quantity" id="3toyQty" >
                 <option value="1" >1</option>
                 <option value="2" >2</option>
                 <option value="3" >3</option>
             </select>
-
         </td>
         <td align="right">100.00</td>
     </tr>
+    <tr>
+        <td align="left" class="subtotal">Shipping Method: Cash on Delivery</td>
+        <td align="left" class="subtotal">Sub Total:</td>
+        <td align="right" class="subtotal">100.00</td>
+    </tr>
+    <tr>
+        <td align="left" class="subtotal">Shipping Fee: 50.00</td>
+        <td align="left" class="subtotal">Total Shipping Fee:</td>
+        <td align="right" class="subtotal">50.00</td>
+    </tr>
 </table>
-
-<table id="subtotal">
-<tr>
-    <td align="left">Shipping Method:</td>
-    <th align="right">Subtotal</th>
-</tr>
-<tr>
-    <td align="left">Shipping Fee:</td>
-    <th align="right">Shipping Fee:</th>
-</tr>
-</table>
-<input type="button" name = "checkout" value="Process to checkout" style="float:right">
-<input type="button" name = "continue" value="Continue Shopping" style="float:left">
-
+<button class="ui primary button" id="ProcessCheckOut">Process to checkout</button>
+<button class="ui primary button" id="ContinueShopping">Continue shopping</button>
+</div>
 </body>
 </html>
