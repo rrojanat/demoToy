@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>ShoppingCart</title>
+    <link rel="stylesheet" href="/css/semantic.min.css">
     <link rel="stylesheet" href="/css/toy.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/script/semantic.min.js"></script>
     <div class="content">
         <h2><font color="#ffffff">Shopping Cart</font></h2>
     </div>
@@ -53,8 +56,7 @@
     <th align="right">Shipping Fee:</th>
 </tr>
 </table>
-<input type="button" name = "checkout" value="Process to checkout" style="float:right">
-<input type="button" name = "continue" value="Continue Shopping" style="float:left">
-
+<button class="ui primary button" id="ProcessCheckOut">Process to checkout</button>
+<button class="ui primary button" id="ContinueShopping">Continue shopping</button>
 </body>
 </html>
