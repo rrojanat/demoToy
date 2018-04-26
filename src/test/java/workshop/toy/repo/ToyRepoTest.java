@@ -35,6 +35,24 @@ public class ToyRepoTest {
     @Test
     public void testSearchToy(){
         List<Toy> toyListResult = toyRepo.searchToy();
+        assertEquals(3, toyListResult.size());
+    }
+
+    @Test
+    public void testSearchToyByAgeAndGender(){
+        List<Toy> toyListResult = toyRepo.searchToyByAgeAndGender("2","1");
+        assertEquals(1, toyListResult.size());
+    }
+
+    @Test
+    public void testSearchToyByAge(){
+        List<Toy> toyListResult = toyRepo.searchToyByAge("2");
+        assertEquals(2, toyListResult.size());
+    }
+
+    @Test
+    public void testSearchToyByGender(){
+        List<Toy> toyListResult = toyRepo.searchToyByGender("3");
         assertEquals(2, toyListResult.size());
     }
 }
