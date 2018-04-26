@@ -86,3 +86,5 @@ label {
     display: table;
     clear: both;
 }
+
+table thead th { color: white; }
