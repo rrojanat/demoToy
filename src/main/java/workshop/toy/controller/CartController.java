@@ -52,9 +52,9 @@ public class CartController {
         return optionalCart.isPresent() ? optionalCart.get() : null;
     }
 
-    @PutMapping("/cart/{id}")
+    @PutMapping("/cart/{id}/address")
     @ResponseBody
-    public Cart updateCart(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
+    public Cart updateCartAddress(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
         Cart currentCart = cartRepo.findById(id).get();
         currentCart.setShoppingName(newCart.getShoppingName());
         currentCart.setAddr1(newCart.getAddr1());
@@ -62,6 +62,16 @@ public class CartController {
         currentCart.setCity(newCart.getCity());
         currentCart.setProvince(newCart.getProvince());
         currentCart.setPostcode(newCart.getPostcode());
+        return cartRepo.save(currentCart);
+    }
+
+    @PutMapping("/cart/{id}/price")
+    @ResponseBody
+    public Cart updateCartPrice(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
+        Cart currentCart = cartRepo.findById(id).get();
+        currentCart.setSubTotal(newCart.getSubTotal());
+        currentCart.setShoppingFee(newCart.getShoppingFee());
+        currentCart.setTotal(newCart.getTotal());
         return cartRepo.save(currentCart);
     }
 
