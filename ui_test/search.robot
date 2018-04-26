@@ -33,16 +33,19 @@ Library   SeleniumLibrary
   Set Selenium Speed   0.3 seconds
 
 1.4Search by Age
-  Wait Until Element Is Enabled   genderCombo
-  Wait Until Element Is Enabled   ageCombo
-  Select From List By Label   ageCombo   Toddler
-  Click Button   searchButton
-  Set Selenium Speed   0.3 seconds
-  Input Text   xpath: //*[@id="tableToyResult_filter"]/label/input   Jacques
-  Click Link   Jacques the Peacock Play and Grow
+#  Wait Until Element Is Enabled   genderCombo
+#  Wait Until Element Is Enabled   ageCombo
+#  Select From List By Label   ageCombo   Toddler
+#  Click Button   searchButton
+#  Set Selenium Speed   0.3 seconds
+  Table Should Contain   tableToyResult_info  Showing 1 to 18 of 18 entries
+#  Input Text   xpath: //*[@id="tableToyResult_filter"]/label/input   Jacques
+  Set Selenium Speed   0.5 seconds
+  Click Link   Dancing Alligator
 
 
 2.1Add to Cart Toy1
+  Set Selenium Speed   1.0 seconds
   Click Button   AddToCart
 
 3.1Qty
