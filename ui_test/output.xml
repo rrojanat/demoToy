@@ -1,40 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180426 14:25:03.722" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
+<robot generated="20180426 16:15:25.917" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
 <suite source="/Users/deadpool/demoToy/ui_test/search.robot" id="s1" name="Search">
-<test id="s1-t1" name="Navigate">
-<kw name="Open Shipping Address">
+<test id="s1-t1" name="1Navigate">
+<kw name="1.1Open index page">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
 <arguments>
-<arg>http://128.199.66.198:8080/ShippingAddress.html</arg>
+<arg>http://128.199.66.198:8080/toy.html</arg>
 <arg>browser=gc</arg>
 </arguments>
-<msg timestamp="20180426 14:25:04.433" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/ShippingAddress.html'.</msg>
-<kw name="Capture Page Screenshot" library="SeleniumLibrary">
-<doc>Takes screenshot of the current page and embeds it into log file.</doc>
-<status status="FAIL" endtime="20180426 14:30:23.250" starttime="20180426 14:30:23.249"></status>
+<msg timestamp="20180426 16:15:26.020" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180426 16:15:28.277" starttime="20180426 16:15:26.020"></status>
 </kw>
-<msg timestamp="20180426 14:30:23.251" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
-<status status="FAIL" endtime="20180426 14:30:23.251" starttime="20180426 14:25:04.433"></status>
+<status status="PASS" endtime="20180426 16:15:28.277" starttime="20180426 16:15:26.020"></status>
 </kw>
-<status status="FAIL" endtime="20180426 14:30:23.253" starttime="20180426 14:25:04.432"></status>
+<kw name="1.2Search All">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:28.352" starttime="20180426 16:15:28.279"></status>
 </kw>
-<status status="FAIL" endtime="20180426 14:30:23.253" critical="yes" starttime="20180426 14:25:04.432">Execution terminated by signal</status>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:28.451" starttime="20180426 16:15:28.352"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180426 16:15:28.451" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180426 16:15:28.668" starttime="20180426 16:15:28.451"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:28.668" starttime="20180426 16:15:28.278"></status>
+</kw>
+<kw name="1.3Search by Gender">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:28.709" starttime="20180426 16:15:28.670"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:28.761" starttime="20180426 16:15:28.709"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.3 seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:28.762" starttime="20180426 16:15:28.762"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Neutral</arg>
+</arguments>
+<msg timestamp="20180426 16:15:28.762" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180426 16:15:30.659" starttime="20180426 16:15:28.762"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180426 16:15:30.660" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180426 16:15:31.607" starttime="20180426 16:15:30.659"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.3 seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:31.607" starttime="20180426 16:15:31.607"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:31.608" starttime="20180426 16:15:28.669"></status>
+</kw>
+<kw name="1.4Search by Age">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:32.535" starttime="20180426 16:15:31.608"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:33.459" starttime="20180426 16:15:32.535"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Toddler</arg>
+</arguments>
+<msg timestamp="20180426 16:15:33.460" level="INFO">Selecting options from selection list 'ageCombo' by label Toddler.</msg>
+<status status="PASS" endtime="20180426 16:15:35.351" starttime="20180426 16:15:33.460"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180426 16:15:35.352" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180426 16:15:36.295" starttime="20180426 16:15:35.351"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>0.3 seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180426 16:15:36.296" starttime="20180426 16:15:36.295"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath: //*[@id="tableToyResult_filter"]/label/input</arg>
+<arg>Jacques</arg>
+</arguments>
+<msg timestamp="20180426 16:15:36.296" level="INFO">Typing text 'Jacques' into text field 'xpath: //*[@id="tableToyResult_filter"]/label/input'.</msg>
+<status status="PASS" endtime="20180426 16:15:37.343" starttime="20180426 16:15:36.296"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>Jacques the Peacock Play and Grow</arg>
+</arguments>
+<msg timestamp="20180426 16:15:37.344" level="INFO">Clicking link 'Jacques the Peacock Play and Grow'.</msg>
+<status status="PASS" endtime="20180426 16:15:38.327" starttime="20180426 16:15:37.343"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:38.327" starttime="20180426 16:15:31.608"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:38.327" critical="yes" starttime="20180426 16:15:26.019"></status>
 </test>
-<status status="FAIL" endtime="20180426 14:30:23.255" starttime="20180426 14:25:03.724"></status>
+<test id="s1-t2" name="2Select Toy">
+<kw name="2.1Add to Cart Toy1">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>AddToCart</arg>
+</arguments>
+<msg timestamp="20180426 16:15:38.330" level="INFO">Clicking button 'AddToCart'.</msg>
+<status status="PASS" endtime="20180426 16:15:39.628" starttime="20180426 16:15:38.330"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:39.628" starttime="20180426 16:15:38.330"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:39.628" critical="yes" starttime="20180426 16:15:38.328"></status>
+</test>
+<test id="s1-t3" name="3Shopping List">
+<kw name="3.1Qty">
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>3toyQty</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20180426 16:15:39.630" level="INFO">Selecting options from selection list '3toyQty' by label 2.</msg>
+<status status="PASS" endtime="20180426 16:15:41.535" starttime="20180426 16:15:39.630"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>3toyQty</arg>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20180426 16:15:41.536" level="INFO">Selecting options from selection list '3toyQty' by label 3.</msg>
+<status status="PASS" endtime="20180426 16:15:43.421" starttime="20180426 16:15:41.536"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>3toyQty</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20180426 16:15:43.422" level="INFO">Selecting options from selection list '3toyQty' by label 1.</msg>
+<status status="PASS" endtime="20180426 16:15:45.298" starttime="20180426 16:15:43.421"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:45.298" starttime="20180426 16:15:39.629"></status>
+</kw>
+<status status="PASS" endtime="20180426 16:15:45.299" critical="yes" starttime="20180426 16:15:39.629"></status>
+</test>
+<status status="PASS" endtime="20180426 16:15:45.300" starttime="20180426 16:15:25.919"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="1" pass="0">Critical Tests</stat>
-<stat fail="1" pass="0">All Tests</stat>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="1" id="s1" name="Search" pass="0">Search</stat>
+<stat fail="0" id="s1" name="Search" pass="3">Search</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20180426 14:30:23.251" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
 </errors>
 </robot>
