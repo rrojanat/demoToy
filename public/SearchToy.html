@@ -71,6 +71,7 @@
             success: function(data){
                 console.log(data);
                 var table = $('#resultTable tr:last')
+                table.remove();
                   $.each( data, function( index, value ) {
                     table.after('<tr><td>'+value.toyId+'</td><td>'+value.name+'</td><td>'+value.gender+'</td><td>'+value.age+'</td><td>'+value.stockStatus+'</td></tr>');
                   });
