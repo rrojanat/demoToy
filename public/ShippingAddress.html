@@ -23,7 +23,7 @@
             var cartData = JSON.stringify(cart);
 
             $.ajax({
-                url: '/rest/cart/' + cartId,
+                url: '/rest/cart/' + cartId + '/address',
                 type: 'put',
                 data: cartData,
                 contentType: 'application/json; charset=utf-8',
