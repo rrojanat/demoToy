@@ -4,19 +4,48 @@ Library    Selenium2Library
 *** Variables ***
 ${BROWSER}    chrome
 ${GOOGLE URL}    http://www.google.com
-${TOY URL}    128.199.
+${SEARCHTOY URL}    http://128.199.66.198:8080/toy.html
 
 *** Test Cases ***
-Search All
-    เข้าไป google
-    ค้นหาคำว่าสวัสดี
-    รอจนกว่าจะเจอคำว่าสวัสดีตอนเช้า
+searchByAgeAndGender
+    openSearchToyPage
+    searchUsingAgeAndGender
+
+searchByAge
+    openSearchToyPage
+    searchUsingAgeOnly
+
+ searchByGender
+    openSearchToyPage
+    searchUsingGenderOnly
+
+ searchAll
+    openSearchToyPage
+    searchUsingAll
 
 *** Keywords ***
-เข้าไป google
-    Open Browser    ${GOOGLE URL}    ${BROWSER}
-ค้นหาคำว่าสวัสดี
-    Input Text     lst-ib    สวัสดี
-    Click Button btnG
-รอจนกว่าจะเจอคำว่าสวัสดีตอนเช้า
-    Wait Until Page Contains     สวัสดีตอนเช้า
+openSearchToyPage
+    Open Browser    ${SEARCHTOY URL}    ${BROWSER}
+searchUsingAgeAndGender
+  Wait Until Element Is Enabled   ageCombo
+  Select From List By Label   ageCombo   Baby
+  Wait Until Element Is Enabled   genderCombo
+  Select From List By Label   genderCombo   Neutral
+  Click Button   searchButton
+  #${count}=   Get Element size   tableToyResult
+  #Should Be True  ${count}==4 
+searchUsingAgeOnly
+  Wait Until Element Is Enabled   ageCombo
+  Select From List By Label   ageCombo   Baby
+  Click Button   searchButton
+searchUsingGenderOnly
+  Wait Until Element Is Enabled   genderCombo
+  Select From List By Label   genderCombo   Neutral
+  Click Button   searchButton
+searchUsingAll
+  Wait Until Element Is Enabled   ageCombo
+  Select From List By Label   ageCombo   All
+  Wait Until Element Is Enabled   genderCombo
+  Select From List By Label   genderCombo   All
+  Click Button   searchButton
+  Close All Browsers
