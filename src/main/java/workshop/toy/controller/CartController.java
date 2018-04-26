@@ -9,6 +9,7 @@ import workshop.toy.repo.CartRepo;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("rest")
@@ -31,7 +32,7 @@ public class CartController {
         this.cartRepo = cartRepo;
     }
 
-    @GetMapping(value = "/cart/{id}/detail" ,produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "/cart/{id}/detail", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<CartDetail> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
         return cartDetailRepo.findCartDetailByCartId(id);
@@ -42,6 +43,36 @@ public class CartController {
     public Cart createCart() {
         Cart cart = new Cart();
         return cartRepo.save(cart);
+    }
+
+    @GetMapping(value = "/cart/{id}", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public Cart getCartByCartId(@PathVariable("id")BigDecimal id) {
+        Optional<Cart> optionalCart = cartRepo.findById(id);
+        return optionalCart.isPresent() ? optionalCart.get() : null;
+    }
+
+    @PutMapping("/cart/{id}/address")
+    @ResponseBody
+    public Cart updateCartAddress(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
+        Cart currentCart = cartRepo.findById(id).get();
+        currentCart.setShoppingName(newCart.getShoppingName());
+        currentCart.setAddr1(newCart.getAddr1());
+        currentCart.setAddr2(newCart.getAddr2());
+        currentCart.setCity(newCart.getCity());
+        currentCart.setProvince(newCart.getProvince());
+        currentCart.setPostcode(newCart.getPostcode());
+        return cartRepo.save(currentCart);
+    }
+
+    @PutMapping("/cart/{id}/price")
+    @ResponseBody
+    public Cart updateCartPrice(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
+        Cart currentCart = cartRepo.findById(id).get();
+        currentCart.setSubTotal(newCart.getSubTotal());
+        currentCart.setShoppingFee(newCart.getShoppingFee());
+        currentCart.setTotal(newCart.getTotal());
+        return cartRepo.save(currentCart);
     }
 
     @PutMapping("/cart/detail")
