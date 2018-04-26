@@ -7,8 +7,40 @@
     <link rel="stylesheet" href="/css/toy.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="/script/semantic.min.js"></script>
+    <script language="javascript">
+    $(document).ready(function(){
+        $('#4Confirm').click(function() {
+            var cartId = $('#cartId').val();
+            var cart = {};
+            cart.cartId = cartId;
+            cart.shoppingName = $('#4FullName').val();
+            cart.addr1 = $('#4Address1').val();
+            cart.addr2 = $('#4Address2').val();
+            cart.city = $('#4City').val();
+            cart.province = $('#4Province').val();
+            cart.postcode = $('#4Postcode').val();
+
+            var cartData = JSON.stringify(cart);
+
+            $.ajax({
+                url: '/rest/cart/' + cartId + '/address',
+                type: 'put',
+                data: cartData,
+                contentType: 'application/json; charset=utf-8',
+                success: function(data){
+                    alert(data.cartId);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                    $('#content').html(errorMsg);
+                }
+            });
+        });
+    });
+    </script>
 </head>
 <body>
+<input type="hidden" id="cartId" value="13">
 <div id="shippingAddress" style="width:100%">
 <div class="content">
     <h2><font color="#ffffff">Shipping Address</font></h2>
