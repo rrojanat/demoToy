@@ -4,17 +4,19 @@
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Style the top navigation bar */
+
 .topnav {
     overflow: hidden;
     background-color: #333;
 }
 
 /* Style the topnav links */
+
 .topnav a {
     float: left;
     display: block;
@@ -25,14 +27,16 @@ body {
 }
 
 /* Style the content */
+
 .content {
     background-color: #990000;
     padding: 10px;
-    /*height: 80px; /* Should be removed. Only for demonstration */*/
-    color=#ffffff
+    /*height: 80px; /* Should be removed. Only for demonstration */
+    /* color: #ffffff; */
 }
 
 /* Style the footer */
+
 .footer {
     background-color: #f1f1f1;
     padding: 10px;
@@ -44,12 +48,15 @@ body {
     width: 100%;
 }
 
-.toy td, .toy th {
+.toy td,
+.toy th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-.toy tr:nth-child(even){background-color: #ffe6e6;}
+.toy tr:nth-child(even) {
+    background-color: #ffe6e6;
+}
 
 .toy th {
     padding-top: 12px;
@@ -69,14 +76,17 @@ body {
 }
 
 /* Create two equal columns that floats next to each other */
+
 .column {
     float: left;
     width: 50%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
+    height: 300px;
+    /* Should be removed. Only for demonstration */
 }
 
 /* Clear floats after the columns */
+
 .row:after {
     content: "";
     display: table;

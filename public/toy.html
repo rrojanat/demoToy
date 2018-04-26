@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Toy Are Not Us</title>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="/css/toy.css">
+    <script src="/script/jquery-3.3.1.min.js"></script>
+    <script src="/script/jquery.dataTables.js"></script>
+    <script src="/script/toy.js"></script>
+
+</head>
+
+<body>
+    <div class="content">
+        <input type="hidden" id="cartId">
+        <div id="searchToy" style="width:100%">
+            <h2>
+                <font color="#ffffff">Search Toy</font>
+            </h2>
+            <label for="ageCombo">Select Age:</label>
+            <select id="ageCombo"></select>
+            <label for="genderCombo">Select Gender:</label>
+            <select id="genderCombo"></select>
+            <input type="button" id="searchButton" value="Search">
+            <div id="searchResult">
+                <table id="tableToyResult" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <!-- <th>Toy ID</th> -->
+                            <th>Toy Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+</body>
+
+</html>
