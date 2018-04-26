@@ -1,6 +1,5 @@
 *** Setting ***
 Library   SeleniumLibrary
-Library   SeleniumLibrary
 
 *** Test Cases ***
 1Navigate
