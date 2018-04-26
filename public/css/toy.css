@@ -91,4 +91,10 @@ body {
     content: "";
     display: table;
     clear: both;
+<<<<<<< HEAD
 }
+=======
+}
+
+table thead th { color: white; }
+>>>>>>> 2474cbba97e2815b3ef87660fc5515b71eaecdf7

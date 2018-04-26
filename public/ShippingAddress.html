@@ -3,30 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Shipping Address</title>
+    <link rel="stylesheet" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="/css/toy.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/script/semantic.min.js"></script>
+    <script language="javascript">
+    $(document).ready(function(){
+        $('#4Confirm').click(function() {
+            var cartId = $('#cartId').val();
+            var cart = {};
+            cart.cartId = cartId;
+            cart.shoppingName = $('#4FullName').val();
+            cart.addr1 = $('#4Address1').val();
+            cart.addr2 = $('#4Address2').val();
+            cart.city = $('#4City').val();
+            cart.province = $('#4Province').val();
+            cart.postcode = $('#4Postcode').val();
+
+            var cartData = JSON.stringify(cart);
+
+            $.ajax({
+                url: '/rest/cart/' + cartId,
+                type: 'put',
+                data: cartData,
+                contentType: 'application/json; charset=utf-8',
+                success: function(data){
+                    alert(data.cartId);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                    $('#content').html(errorMsg);
+                }
+            });
+        });
+    });
+    </script>
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
-<script src="semantic/dist/semantic.min.js"></script>
-<h1>Shipping Address</h1>
-<div class="ui input">
-    <div><label for="fullname">Full Name</label>
-        <input type="text" name="fullname"placeholder="Full name..."></div>
-    <div><label for="address1">Address 1</label>
-        <input type="text" name="address1" placeholder="Address 1 .."></div>
-    <div><label for="address2">Address 2</label>
-        <input type="text" name="address2"  placeholder="Address 2 .."></div>
-    <div><label for="city">City</label>
-        <input type="text" name="city" placeholder="City">
-        <label for="province">Province</label>
-        <input type="text" name="province"  placeholder="Province">
-        <label for="postcode">Postcode</label>
-        <input type="text" name="postcode"  placeholder="Postcode"></div>
-    <div><input type="button" value="Deliver to this address"></div>
-
+<input type="hidden" id="cartId" value="13">
+<div id="shippingAddress" style="width:100%">
+<div class="content">
+    <h2><font color="#ffffff">Shipping Address</font></h2>
+</div>
+<table class="toy">
+    <tr>
+        <td width="10%">Full Name</td>
+        <td colspan="5"><div class="ui input"><input type="text" name="fullName" id="4FullName" size="100" maxlength="200"></div></td>
+    </tr>
+    <tr>
+        <td>Address 1</td>
+        <td colspan="5"><div class="ui input"><input type="text" name="address1" id="4Address1" size="100" maxlength="200"></div></td>
+    </tr>
+    <tr>
+        <td>Address 2</td>
+        <td colspan="5"><div class="ui input"><input type="text" name="address2" id="4Address2" size="100" maxlength="200"></div></td>
+    </tr>
+    <tr>
+        <td>City</td>
+        <td><div class="ui input"><input type="text" name="city" id="4City" size="40" maxlength="100"></div></td>
+        <td>Province</td>
+        <td><div class="ui input"><input type="text" name="province" id="4Province" size="40" maxlength="100"></div></td>
+        <td>Postcode</td>
+        <td><div class="ui input"><input type="text" name="postcode" id="4Postcode" size="5" maxlength="5"></div></td>
+    </tr>
+    <tr>
+        <td colspan="6"><button class="ui primary button" id="4Confirm">Confirm</button></td>
+    </tr>
+</table>
 </div>
 </body>
 </html>
