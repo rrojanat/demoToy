@@ -24,12 +24,6 @@ body {
     text-decoration: none;
 }
 
-/* Change color on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
 /* Style the content */
 .content {
     background-color: #990000;
@@ -50,15 +44,12 @@ body {
     width: 100%;
 }
 
-
 .toy td, .toy th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
 .toy tr:nth-child(even){background-color: #ffe6e6;}
-
-.toy tr:hover {background-color: #ddd;}
 
 .toy th {
     padding-top: 12px;
@@ -68,6 +59,10 @@ body {
     color: white;
 }
 
+.subtotal {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+}
 
 * {
     box-sizing: border-box;
@@ -86,9 +81,4 @@ body {
     content: "";
     display: table;
     clear: both;
-}
-
-.subtotal {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 100%;
 }
