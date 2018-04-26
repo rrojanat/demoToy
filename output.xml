@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180426 11:42:12.260" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
-<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/searchUITest.robot" id="s1" name="searchUITest">
+<robot generated="20180426 12:51:10.844" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
+<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/searchToy.robot" id="s1" name="searchToy">
 <test id="s1-t1" name="Search All">
 <kw name="เข้าไป google">
 <kw name="Open Browser" library="Selenium2Library">
@@ -9,24 +9,40 @@
 <arg>${GOOGLE URL}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20180426 11:42:12.464" level="INFO">Opening browser 'chrome' to base url 'http://www.google.com'.</msg>
-<status status="PASS" endtime="20180426 11:42:20.220" starttime="20180426 11:42:12.463"></status>
+<msg timestamp="20180426 12:51:11.089" level="INFO">Opening browser 'chrome' to base url 'http://www.google.com'.</msg>
+<status status="PASS" endtime="20180426 12:51:17.735" starttime="20180426 12:51:11.089"></status>
 </kw>
-<status status="PASS" endtime="20180426 11:42:20.220" starttime="20180426 11:42:12.462"></status>
+<status status="PASS" endtime="20180426 12:51:17.735" starttime="20180426 12:51:11.088"></status>
 </kw>
-<status status="PASS" endtime="20180426 11:42:20.221" critical="yes" starttime="20180426 11:42:12.461"></status>
+<kw name="ค้นหาคำว่าสวัสดี">
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>lst-ib</arg>
+<arg>สวัสดี</arg>
+</arguments>
+<msg timestamp="20180426 12:51:17.738" level="INFO">Typing text 'สวัสดี' into text field 'lst-ib'.</msg>
+<status status="PASS" endtime="20180426 12:51:17.916" starttime="20180426 12:51:17.737"></status>
+</kw>
+<kw name="Click Button btnG">
+<msg timestamp="20180426 12:51:17.925" level="FAIL">No keyword with name 'Click Button btnG' found.</msg>
+<status status="FAIL" endtime="20180426 12:51:17.925" starttime="20180426 12:51:17.925"></status>
+</kw>
+<status status="FAIL" endtime="20180426 12:51:17.926" starttime="20180426 12:51:17.736"></status>
+</kw>
+<status status="FAIL" endtime="20180426 12:51:17.926" critical="yes" starttime="20180426 12:51:11.087">No keyword with name 'Click Button btnG' found.</status>
 </test>
-<status status="PASS" endtime="20180426 11:42:20.222" starttime="20180426 11:42:12.262"></status>
+<status status="FAIL" endtime="20180426 12:51:17.930" starttime="20180426 12:51:10.847"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="1">Critical Tests</stat>
-<stat fail="0" pass="1">All Tests</stat>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="searchUITest" pass="1">searchUITest</stat>
+<stat fail="1" id="s1" name="searchToy" pass="0">searchToy</stat>
 </suite>
 </statistics>
 <errors>

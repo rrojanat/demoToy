@@ -4,10 +4,13 @@ Library    Selenium2Library
 *** Variables ***
 ${BROWSER}    chrome
 ${GOOGLE URL}    http://www.google.com
+${TOY URL}    128.199.
 
 *** Test Cases ***
 Search All
     เข้าไป google
+    ค้นหาคำว่าสวัสดี
+    รอจนกว่าจะเจอคำว่าสวัสดีตอนเช้า
 
 *** Keywords ***
 เข้าไป google
