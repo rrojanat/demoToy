@@ -30,6 +30,34 @@ var toy = (function ($) {
                 data: JSON.stringify(criteria)
             });
         },
+        getToyById: function (toyId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/toy/' + toyId,
+                "method": "GET",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        addNewCart: function () {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart',
+                "method": "PUT",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        addNewCartDetail: function (cartDetail) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/detail',
+                "method": "PUT",
+                "contentType": "application/json; charset=utf-8",
+                data: JSON.stringify(cartDetail)
+            });
+        },
         /////   -----------------------
         populateToyResultTable: function (datalist) {
             $('#tableToyResult').DataTable({
@@ -62,29 +90,74 @@ var toy = (function ($) {
                 ]
             });
         },
+        openToyName: function (toyId) {
+            $.when(toy.getToyById(toyId))
+                .done(function (response) {
+                    $('#2toyId').val(response.toyId);
+                    $('#2toyName').text(response.name);
+                    $('#2toyBrand').text(response.brand);
+                    $('#2toyGender').text(response.gender);
+                    $('#2toyAge').text(response.age);
+                    $('#2toyPrice').text(response.price);
+                    $('#2toyShipping').text(response.shippingMethod);
+                    $('#2toyStock').text(response.stockStatus);
+                    $('#2toyStockQty').text(response.qty);
+                    $('#2toyImg').attr('src', response.toyImg);
+                    $('#searchToy').fadeOut(500, function () {
+                        $('#toyName').fadeIn(500);
+                    });
+                });
+        },
+        addToCart: function (cartId, toyId) {
+            var cartDetail = {};
+            if (cartId == null || cartId == '') {
+                $.when(toy.addNewCart())
+                    .done(function (resCart) {
+                        cartDetail.cartId = resCart.cartId;
+                        $('#cartId').val(resCart.cartId);
+                        cartDetail.toyId = toyId;
+                        cartDetail.qty = $('#2toyQty option:selected').val();
+                        $.when(toy.addNewCartDetail(cartDetail))
+                            .done(function (resCartDetail) {
+                                $('#toyName').fadeOut(500, function () {
+                                    $('#shoppingCart').fadeIn(500);
+                                });
+                            });
+                    });
+            } else {
+                cartDetail.cartId = cartId;
+                cartDetail.toyId = toyId;
+                cartDetail.qty = $('#2toyQty option:selected').val();
+                $.when(toy.addNewCartDetail(cartDetail))
+                    .done(function (resCartDetail) {
+                        $('#toyName').fadeOut(500, function () {
+                            $('#shoppingCart').fadeIn(500);
+                        });
+                    });
+            }
+        },
         /////   -----------------------
     }
 }(jQuery));
 $(document).ready(function () {
-    $.when(toy.getAgeCombo())
-        .done(function (response) {
-            var $select = $('#ageCombo');
-            $select.append("<option value=''>All</option>");
-            $.each(response, function (index, value) {
-                $select.append('<option value=' + value.value + '>' + value.text +
+    $.when(toy.getAgeCombo(), toy.getGenderCombo())
+        .done(function (resAge, resGender) {
+            var ageSelect = $('#ageCombo');
+            ageSelect.append("<option value=''>All</option>");
+            $.each(resAge[0], function (index, value) {
+                ageSelect.append('<option value=' + value.value + '>' + value.text +
                     '</option>');
             });
-        });
-    $.when(toy.getGenderCombo())
-        .done(function (response) {
-            var $select = $('#genderCombo');
-            $select.append("<option value=''>All</option>");
-            $.each(response, function (index, value) {
-                $select.append('<option value=' + value.value + '>' + value.text +
+            var genderSelect = $('#genderCombo');
+            genderSelect.append("<option value=''>All</option>");
+            $.each(resGender[0], function (index, value) {
+                genderSelect.append('<option value=' + value.value + '>' + value.text +
                     '</option>');
             });
+            $("#searchButton").trigger('click');
         });
     $('#searchResult').hide();
+
 
     //  -------------------------- button -------------------------------------------
     $("#searchButton").click(function () {
@@ -105,6 +178,11 @@ $(document).ready(function () {
                     $('#searchResult').show();
                 }
             });
+    });
+    $('#AddToCart').click(function () {
+        var cartId = $('#cartId').val();
+        var toyId = $('#2toyId').val();
+        toy.addToCart(cartId, toyId);
     });
 });
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>End document ready>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
