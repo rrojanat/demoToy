@@ -17,15 +17,18 @@ public class CartDetail {
     private BigDecimal toyId;
     @JsonView
     private BigDecimal qty;
+    @JsonView
+    private BigDecimal detailPrice;
 
     public CartDetail() {
     }
 
-    public CartDetail(BigDecimal cartDetailId, BigDecimal cartId, BigDecimal toyId, BigDecimal qty) {
+    public CartDetail(BigDecimal cartDetailId, BigDecimal cartId, BigDecimal toyId, BigDecimal qty, BigDecimal detailPrice) {
         this.cartDetailId = cartDetailId;
         this.cartId = cartId;
         this.toyId = toyId;
         this.qty = qty;
+        this.detailPrice = detailPrice;
     }
 
     public BigDecimal getCartDetailId() {
@@ -58,5 +61,13 @@ public class CartDetail {
 
     public void setQty(BigDecimal qty) {
         this.qty = qty;
+    }
+
+    public BigDecimal getDetailPrice() {
+        return detailPrice;
+    }
+
+    public void setDetailPrice(BigDecimal detailPrice) {
+        this.detailPrice = detailPrice;
     }
 }
