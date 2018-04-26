@@ -50,10 +50,10 @@
 </h1>
 
 <label for="ageCombo">Select Age:</label>
-<select class="ageCombo"></select>
+<select class="ageCombo" id="ageCombo"></select>
 
 <label for="genderCombo">Select Gender:</label>
-<select class="genderCombo"></select>
+<select class="genderCombo" id="genderCombo"></select>
 
 <input type="button" id="searchButton" value="Search">
 
@@ -71,6 +71,7 @@
             success: function(data){
                 console.log(data);
                 var table = $('#resultTable tr:last')
+                table.remove();
                   $.each( data, function( index, value ) {
                     table.after('<tr><td>'+value.toyId+'</td><td>'+value.name+'</td><td>'+value.gender+'</td><td>'+value.age+'</td><td>'+value.stockStatus+'</td></tr>');
                   });

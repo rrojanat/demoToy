@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180426 11:42:12.260" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
+<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/searchUITest.robot" id="s1" name="searchUITest">
+<test id="s1-t1" name="Search All">
+<kw name="เข้าไป google">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${GOOGLE URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180426 11:42:12.464" level="INFO">Opening browser 'chrome' to base url 'http://www.google.com'.</msg>
+<status status="PASS" endtime="20180426 11:42:20.220" starttime="20180426 11:42:12.463"></status>
+</kw>
+<status status="PASS" endtime="20180426 11:42:20.220" starttime="20180426 11:42:12.462"></status>
+</kw>
+<status status="PASS" endtime="20180426 11:42:20.221" critical="yes" starttime="20180426 11:42:12.461"></status>
+</test>
+<status status="PASS" endtime="20180426 11:42:20.222" starttime="20180426 11:42:12.262"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="searchUITest" pass="1">searchUITest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
