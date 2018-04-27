@@ -8,9 +8,6 @@ UI1.1
   1Search All
   1Search by Criteria
   1Choose Toy
-#UI1.2
-#  2Open index page
-
 
 *** Keywords ***
 1Open index page
