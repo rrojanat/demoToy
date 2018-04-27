@@ -54,3 +54,4 @@ proceedCheckout
   Input Text    4Postcode    10560
   Capture Page Screenshot
   Click Button    4Confirm
+  Close All Browsers
