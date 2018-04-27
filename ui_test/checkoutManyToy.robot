@@ -17,6 +17,8 @@ selectToy
     checkQty
     checkStatus
     addToCart
+addAnotherToy
+    continueShopping
 CheckoutSingleItem
     proceedCheckout
 
@@ -43,6 +45,8 @@ checkStatus
   Wait Until Element Contains    2toyStock    In Stock
 addToCart
   Click Button    AddToCart
+  #Capture Page Screenshot
+continueShopping
   Capture Page Screenshot
 proceedCheckout
   Click Button    ProcessCheckOut
