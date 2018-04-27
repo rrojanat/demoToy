@@ -42,7 +42,6 @@ Library   SeleniumLibrary
   Set Selenium Speed   0.5 seconds
   Click Link   Dancing Alligator
 
-
 2.1Add to Cart Toy1
   Set Selenium Speed   1.0 seconds
   Click Button   AddToCart
