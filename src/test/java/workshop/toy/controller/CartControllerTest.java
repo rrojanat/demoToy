@@ -47,7 +47,7 @@ public class CartControllerTest {
     private CartDetailRepo cartDetailRepo;
 
     @Test
-    public void testCartDetailEmpty() throws Exception {
+    public void testCartDetailEmpty() {
         List<CartDetail> cartDats = new ArrayList<CartDetail>();
         given(cartDetailRepo.findCartDetailByCartId(new BigDecimal("1")))
                 .willReturn(cartDats);
@@ -57,7 +57,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void testCalculateCartPrice() throws Exception {
+    public void testCalculateCartPrice() {
         Cart cart = new Cart();
         cart.setCartId(new BigDecimal("1"));
 
@@ -105,7 +105,7 @@ public class CartControllerTest {
     }
 
     @Test
-    public void testCalculateCartDetailPrice() throws Exception {
+    public void testCalculateCartDetailPrice() {
         List<CartDetail> cartDetailList = new ArrayList<CartDetail>();
         CartDetail cartDetail1 = new CartDetail();
         cartDetail1.setCartDetailId(new BigDecimal("1"));
@@ -144,5 +144,10 @@ public class CartControllerTest {
         List resultCartDetailList = response.getBody();
         assertEquals(new BigDecimal("22.50"), new BigDecimal(((LinkedHashMap) resultCartDetailList.get(0)).get("detailPrice").toString()).setScale(2));
         assertEquals(new BigDecimal("14.75"), new BigDecimal(((LinkedHashMap) resultCartDetailList.get(1)).get("detailPrice").toString()).setScale(2));
+    }
+
+    @Test
+    public void testUpdateAddress() {
+
     }
 }
