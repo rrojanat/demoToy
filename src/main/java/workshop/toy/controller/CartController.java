@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import workshop.toy.model.Cart;
 import workshop.toy.model.CartDetail;
+import workshop.toy.model.CartDetailWithToy;
 import workshop.toy.model.Toy;
 import workshop.toy.repo.CartDetailRepo;
 import workshop.toy.repo.CartRepo;
@@ -36,21 +37,6 @@ public class CartController {
         this.cartRepo = cartRepo;
     }
 
-    @GetMapping(value = "/cart/{id}/detail", produces = "application/json; charset=UTF-8")
-    @ResponseBody
-    public List<CartDetail> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
-        List<CartDetail> cartDetailList = cartDetailRepo.findCartDetailByCartId(id);
-
-        for(int i = 0; i < cartDetailList.size(); i++) {
-            CartDetail cartDetail = cartDetailList.get(i);
-            if(cartDetail.getDetailPrice() == null) {
-                calculateCartDetailPrice(cartDetail);
-            }
-        }
-
-        return cartDetailList;
-    }
-
     @PutMapping("/cart")
     @ResponseBody
     public Cart createCart() {
@@ -70,6 +56,21 @@ public class CartController {
         return cart;
     }
 
+    @GetMapping(value = "/cart/{id}/detail", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<CartDetailWithToy> getCartDetailByCartId(@PathVariable("id")BigDecimal id){
+        List<CartDetailWithToy> cartDetailList = cartDetailRepo.findCartDetailByCartId(id);
+
+        for(int i = 0; i < cartDetailList.size(); i++) {
+            CartDetailWithToy cartDetail = cartDetailList.get(i);
+            if(cartDetail.getDetailPrice() == null) {
+                calculateCartDetailPrice(cartDetail);
+            }
+        }
+
+        return cartDetailList;
+    }
+
     @PutMapping("/cart/{id}/address")
     @ResponseBody
     public Cart updateCartAddress(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
@@ -85,18 +86,30 @@ public class CartController {
 
     @PutMapping("/cart/{id}/price")
     @ResponseBody
-    public Cart updateCartPrice(@PathVariable("id")BigDecimal id, @RequestBody Cart newCart) {
-        Cart currentCart = cartRepo.findById(id).get();
-        currentCart.setSubTotal(newCart.getSubTotal());
-        currentCart.setShoppingFee(newCart.getShoppingFee());
-        currentCart.setTotal(newCart.getTotal());
-        return cartRepo.save(currentCart);
+    public Cart updateCartPrice(@PathVariable("id")BigDecimal id) {
+        Cart cart = cartRepo.findById(id).get();
+        calculateCartPrice(cart);
+        return cartRepo.save(cart);
     }
 
     @PutMapping("/cart/detail")
     @ResponseBody
     public CartDetail addToCart(@RequestBody CartDetail cartDetail) {
         return cartDetailRepo.save(cartDetail);
+    }
+
+    @GetMapping(value = "/cart/detail/{id}", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public CartDetail getCartDetailByCartDetailId(@PathVariable("id")BigDecimal id) {
+        return cartDetailRepo.findById(id).get();
+    }
+
+    @DeleteMapping ("/cart/detail/{id}")
+    @ResponseBody
+    public CartDetail deleteCartDetail(@PathVariable("id")BigDecimal id) {
+        CartDetail cartDetail = cartDetailRepo.findById(id).get();
+        cartDetailRepo.delete(cartDetail);
+        return cartDetail;
     }
 
     @PutMapping("/cart/detail/{id}/qty")
@@ -107,25 +120,18 @@ public class CartController {
         return cartDetailRepo.save(currentCartDetail);
     }
 
-    @DeleteMapping ("/cart/detail/{id}")
-    @ResponseBody
-    public void deleteCartDetail(@PathVariable("id")BigDecimal id) {
-        CartDetail cartDetail = cartDetailRepo.findById(id).get();
-        cartDetailRepo.delete(cartDetail);
-    }
-
-    private void calculateCartDetailPrice(CartDetail cartDetail) {
+    private void calculateCartDetailPrice(CartDetailWithToy cartDetail) {
         Toy toy = toyRepo.getToyById(cartDetail.getToyId());
         cartDetail.setDetailPrice(toy.getPrice().multiply(cartDetail.getQty()).setScale(2, BigDecimal.ROUND_HALF_UP));
     }
 
     private void calculateCartPrice(Cart cart) {
-        List<CartDetail> cartDetailList = cartDetailRepo.findCartDetailByCartId(cart.getCartId());
+        List<CartDetailWithToy> cartDetailList = cartDetailRepo.findCartDetailByCartId(cart.getCartId());
         BigDecimal subTotal = new BigDecimal("0");
         BigDecimal shoppingFee = new BigDecimal("50");
 
         for(int i = 0; i < cartDetailList.size(); i++) {
-            CartDetail cartDetail = cartDetailList.get(i);
+            CartDetailWithToy cartDetail = cartDetailList.get(i);
             if (cartDetail.getDetailPrice() == null) {
                 calculateCartDetailPrice(cartDetail);
             }
