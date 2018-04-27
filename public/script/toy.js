@@ -58,6 +58,33 @@ var toy = (function ($) {
                 data: JSON.stringify(cartDetail)
             });
         },
+        getCart: function (cartId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartId,
+                "method": "GET",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        getCartDetailByCartId: function (cartId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartId + "/detail",
+                "method": "GET",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        getDeleteCartDetail: function (cartDetailId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/detail' + cartDetailId,
+                "method": "DELETE",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
         /////   -----------------------
         populateToyResultTable: function (datalist) {
             $('#tableToyResult').DataTable({
@@ -120,6 +147,7 @@ var toy = (function ($) {
                         $.when(toy.addNewCartDetail(cartDetail))
                             .done(function (resCartDetail) {
                                 $('#toyName').fadeOut(500, function () {
+                                    toy.renderShoppingCart(resCart.cartId);
                                     $('#shoppingCart').fadeIn(500);
                                 });
                             });
@@ -131,10 +159,54 @@ var toy = (function ($) {
                 $.when(toy.addNewCartDetail(cartDetail))
                     .done(function (resCartDetail) {
                         $('#toyName').fadeOut(500, function () {
+                            toy.renderShoppingCart(cartId);
                             $('#shoppingCart').fadeIn(500);
                         });
                     });
             }
+        },
+        renderShoppingCart: function (cartId) {
+            $.when(toy.getCart(cartId), toy.getCartDetailByCartId(cartId))
+                .done(function (respCart, respCartDetail) {
+                    toy.populateShoppingCartDetail(respCart[0], respCartDetail[0]);
+                });
+        },
+        populateShoppingCartDetail: function (respCart, cartDetails) {
+            $('#tableShoppingCart').DataTable({
+                "searching": false,
+                "info": false,
+                "ordering": false,
+                "paging": true,
+                "data": cartDetails,
+                "columns": [{
+                        "data": "cartDetailId",
+                        "className": "dt-body-left",
+                        "render": function (data, type, row) {
+                            var items = row.name + " By " + row.brand + "<BR>";
+                            items += row.gender + "<BR>";
+                            items += row.age + "<BR>";
+                            items += row.stockStatus + "<BR>";
+                            items += "<button class='ui primary button' onclick='return toy.deleteToyFromShoppingCart("
+                            respCart.cartId + "," + cartDetail.cartDetailId + ")'>Delete</button>";
+                            return items;
+                        }
+                    },
+                    {
+                        "data": "qty",
+                        "className": "dt-body-center"
+                    },
+                    {
+                        "data": "detailPrice",
+                        "className": "dt-body-right"
+                    }
+                ]
+            });
+        },
+        deleteToyFromShoppingCart: function (cartId, cartDetailId) {
+            $.when(toy.getDeleteCartDetail(cartDetailId))
+                .done(function (respDeletedCartDetail) {
+                    toy.renderShoppingCart(cartId);
+                });
         },
         /////   -----------------------
     }
