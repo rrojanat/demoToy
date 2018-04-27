@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/toy.css">
     <script src="/script/jquery-3.3.1.min.js"></script>
     <script src="/script/jquery.dataTables.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="/script/toy.js"></script>
 
 </head>
@@ -150,9 +151,80 @@
                     </tr>
                 </thead>
                 <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2" style="text-align:left"></th>
+                        <th style="text-align:right"></th>
+                    </tr>
+                </tfoot>
             </table>
             <button class="ui primary button" id="ProcessCheckOut">Process to checkout</button>
             <button class="ui primary button" id="ContinueShopping">Continue shopping</button>
+        </div>
+        <div id="shippingAddress" style="width:100%;display: none;">
+            <div class="content">
+                <h2>
+                    <font color="#ffffff">Shipping Address</font>
+                </h2>
+            </div>
+            <table class="toy">
+                <tr>
+                    <td width="10%">Full Name</td>
+                    <td colspan="5">
+                        <div class="ui input">
+                            <input type="text" name="fullName" id="4FullName" size="100" maxlength="200">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 1</td>
+                    <td colspan="5">
+                        <div class="ui input">
+                            <input type="text" name="address1" id="4Address1" size="100" maxlength="200">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address 2</td>
+                    <td colspan="5">
+                        <div class="ui input">
+                            <input type="text" name="address2" id="4Address2" size="100" maxlength="200">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>
+                        <div class="ui input">
+                            <input type="text" name="city" id="4City" size="40" maxlength="100">
+                        </div>
+                    </td>
+                    <td>Province</td>
+                    <td>
+                        <div class="ui input">
+                            <input type="text" name="province" id="4Province" size="40" maxlength="100">
+                        </div>
+                    </td>
+                    <td>Postcode</td>
+                    <td>
+                        <div class="ui input">
+                            <input type="text" name="postcode" id="4Postcode" size="5" maxlength="5">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <button class="ui primary button" id="4Confirm">Confirm</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="summary" style="width:100%;display: none;">
+            <div class="content">
+                <h2>
+                    <font color="#ffffff">Thank you</font>
+                </h2>
+            </div>
         </div>
 </body>
 

@@ -48,6 +48,18 @@ var toy = (function ($) {
                 "contentType": "application/json; charset=utf-8"
             });
         },
+        updateQty: function (cartDetailId, qty) {
+            var cartDetail = {};
+            cartDetail.qty = qty;
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/detail/' + cartDetailId + "/qty",
+                "method": "PUT",
+                "contentType": "application/json; charset=utf-8",
+                data: JSON.stringify(cartDetail)
+            });
+        },
         addNewCartDetail: function (cartDetail) {
             return $.ajax({
                 "async": true,
@@ -85,21 +97,38 @@ var toy = (function ($) {
                 "contentType": "application/json; charset=utf-8"
             });
         },
+        confirmDelivery: function (cartData) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartData.cartId + '/address',
+                "method": "PUT",
+                "contentType": "application/json; charset=utf-8",
+                data: JSON.stringify(cartData)
+            });
+        },
+        updateShoppingPrice: function (cartId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartId + '/price',
+                "method": "PUT",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
         /////   -----------------------
         populateToyResultTable: function (datalist) {
             $('#tableToyResult').DataTable({
                 "paging": false,
                 "data": datalist,
-                "columns": [
-                    // {
-                    //     "data": "toyId",
-                    //     "className": "dt-body-center"
-                    // },
-                    {
+                "columns": [{
                         "data": "name",
                         "className": "dt-body-left",
                         "render": function (data, type, row) {
-                            return ('<a href="#" onclick="return toy.openToyName(\'' + row.toyId + '\');">' + data + '</a>');
+                            if (row.qty > 0) {
+                                return ('<a href="#" onclick="return toy.openToyName(\'' + row.toyId + '\');">' + data + '</a>');
+                            }
+                            return data;
                         }
                     },
                     {
@@ -130,6 +159,7 @@ var toy = (function ($) {
                     $('#2toyStock').text(response.stockStatus);
                     $('#2toyStockQty').text(response.qty);
                     var selectedtoyQty = $('#2toyQty');
+                    selectedtoyQty.empty();
                     for (var ii = 1; ii <= response.qty; ii++) {
                         selectedtoyQty.append('<option value=' + ii + '>' + ii + '</option>');
                     }
@@ -175,6 +205,16 @@ var toy = (function ($) {
                     toy.populateShoppingCartDetail(respCart[0], respCartDetail[0]);
                 });
         },
+        onUpdateQty: function (cartDetailId, selectObj) {
+            console.log(cartDetailId);
+            console.log($(selectObj).val());
+            $.when(toy.updateQty(cartDetailId, $(selectObj).val()))
+                .done(function (resp) {
+                    var cartId = $('#cartId').val();
+                    toy.renderShoppingCart(cartId);
+                    return false;
+                });
+        },
         populateShoppingCartDetail: function (respCart, cartDetails) {
             if ($.fn.DataTable.isDataTable('#tableShoppingCart')) {
                 $('#tableShoppingCart').DataTable().destroy();
@@ -209,10 +249,12 @@ var toy = (function ($) {
                         "data": "qty",
                         "className": "dt-body-center",
                         "render": function (data, type, row) {
-                            var selectQty = "<select name='selectedQty'>";
+                            console.log(row.stockQty);
+                            var selectQty = "<select name='selectedQty' onChange='return toy.onUpdateQty(" + row.cartDetailId + ",this);'>";
                             var selected = ""
+
                             for (var ii = 1; ii <= row.stockQty; ii++) {
-                                if (ii = data) {
+                                if (ii == data) {
                                     selected = "selected";
                                 } else {
                                     selected = "";
@@ -225,9 +267,29 @@ var toy = (function ($) {
                     },
                     {
                         "data": "detailPrice",
-                        "className": "dt-body-right"
+                        "className": "dt-body-right",
+                        "render": function (data, type, row) {
+                            return numeral(data).format('0,0.00')
+                        }
                     }
-                ]
+                ],
+                "footerCallback": function (row, data, start, end, display) {
+                    var api = this.api();
+                    console.log(data);
+                    var numberOfItems = data.length;
+                    var itemLabel = numberOfItems > 1 ? "Items" : "Item";
+                    // shoping method
+                    // Update footer
+                    $(api.column(0).footer()).html(
+                        'Shoping Method: Cash on Delivery <br>' +
+                        'Shooping Fee: 50.00 THB'
+                    );
+                    $(api.column(2).footer()).html(
+                        'Sub Total (' + numeral(numberOfItems).format('0,0') + ' ' + itemLabel + '): ' + numeral(respCart.subTotal).format('0,0.00') + " THB<br>" +
+                        'Shooping Fee: 50.00 THB<br>' +
+                        'Total: ' + numeral(respCart.total).format('0,0.00') + ' THB'
+                    );
+                },
             });
         },
         deleteToyFromShoppingCart: function (cartId, cartDetailId) {
@@ -283,6 +345,38 @@ $(document).ready(function () {
         var cartId = $('#cartId').val();
         var toyId = $('#2toyId').val();
         toy.addToCart(cartId, toyId);
+    });
+    $('#ProcessCheckOut').click(function () {
+        var cartId = $('#cartId').val();
+        $.when(toy.updateShoppingPrice(cartId))
+            .done(function (resp) {
+                $('#shoppingCart').fadeOut(100, function () {
+                    $('#shippingAddress').fadeIn(20);
+                });
+            });
+    });
+    $('#ContinueShopping').click(function () {
+        $('#shoppingCart').fadeOut(100, function () {
+            $('#searchToy').fadeIn(20);
+            $("#searchButton").trigger('click');
+        });
+    });
+    $('#4Confirm').click(function () {
+        var cartId = $('#cartId').val();
+        var cart = {};
+        cart.cartId = cartId;
+        cart.shoppingName = $('#4FullName').val();
+        cart.addr1 = $('#4Address1').val();
+        cart.addr2 = $('#4Address2').val();
+        cart.city = $('#4City').val();
+        cart.province = $('#4Province').val();
+        cart.postcode = $('#4Postcode').val();
+        $.when(toy.confirmDelivery(cart))
+            .done(function (respData) {
+                $('#shippingAddress').fadeOut(100, function () {
+                    $('#summary').fadeIn(20);
+                });
+            });
     });
 });
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>End document ready>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
