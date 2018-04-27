@@ -204,9 +204,4 @@ public class CartControllerTest {
         assertEquals(200, response.getStatusCode().value());
         assertEquals(new BigDecimal("3"), response.getBody().getQty());
     }
-
-    @Test
-    public void testRemoveFromCart() {
-
-    }
 }

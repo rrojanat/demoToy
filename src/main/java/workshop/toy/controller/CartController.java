@@ -89,6 +89,17 @@ public class CartController {
     public Cart updateCartPrice(@PathVariable("id")BigDecimal id) {
         Cart cart = cartRepo.findById(id).get();
         calculateCartPrice(cart);
+
+        List<CartDetailWithToy> cartDetailList = cartDetailRepo.findCartDetailByCartId(id);
+
+        for(int i = 0; i < cartDetailList.size(); i++) {
+            CartDetailWithToy cartDetail = cartDetailList.get(i);
+            calculateCartDetailPrice(cartDetail);
+            CartDetail updateCartDetail = cartDetailRepo.findById(cartDetail.getCartDetailId()).get();
+            updateCartDetail.setDetailPrice(cartDetail.getDetailPrice());
+            cartDetailRepo.save(updateCartDetail);
+        }
+
         return cartRepo.save(cart);
     }
 

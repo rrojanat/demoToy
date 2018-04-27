@@ -60,7 +60,7 @@ UI1.2
 #  Open Browser   http://128.199.66.198:8080/ShippingAddress.html  browser=gc
 #  Input Text   4FullName   Sadathit Issamo สดาทิตย์ อิสโม
 #  Input Text   4Address1   111/222 Ladprow Soi.3 ลาดพร้าว ซ.3
-#  Input Text   4Address2   Prompran3 Building อาคารพร้อมพันธ์3 Fl10
+#  Input Text   4Address2   Prompran3 Building อาคารพร้อมพันธ์3
 #  Input Text   4City   Ladprow ลาดพร้าว
 #  Input Text   4Province   Bangkok กรุงเทพ
 #  Input Text   4Postcode   10540
