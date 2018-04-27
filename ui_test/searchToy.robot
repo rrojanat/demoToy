@@ -1,5 +1,5 @@
 *** Setting ***
-Library    Selenium2Library
+Library    SeleniumLibrary
 
 *** Variables ***
 ${BROWSER}    chrome
@@ -7,6 +7,7 @@ ${GOOGLE URL}    http://www.google.com
 ${SEARCHTOY URL}    http://128.199.66.198:8080/toy.html
 
 *** Test Cases ***
+
 searchByAgeAndGender
     openSearchToyPage
     searchUsingAgeAndGender
@@ -15,23 +16,25 @@ searchByAge
     openSearchToyPage
     searchUsingAgeOnly
 
- searchByGender
+searchByGender
     openSearchToyPage
     searchUsingGenderOnly
 
- searchAll
+searchAll
     openSearchToyPage
     searchUsingAll
 
 *** Keywords ***
 openSearchToyPage
-    Open Browser    ${SEARCHTOY URL}    ${BROWSER}
+  Open Browser    ${SEARCHTOY URL}    ${BROWSER}
 searchUsingAgeAndGender
   Wait Until Element Is Enabled   ageCombo
   Select From List By Label   ageCombo   Baby
   Wait Until Element Is Enabled   genderCombo
   Select From List By Label   genderCombo   Neutral
   Click Button   searchButton
+  Wait Until Element Contains    tableToyResult_info    Showing 1 to 4 of 4 entries
+  Capture Page Screenshot
   #${count}=   Get Element size   tableToyResult
   #Should Be True  ${count}==4 
 searchUsingAgeOnly
