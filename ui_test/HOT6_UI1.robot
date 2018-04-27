@@ -25,7 +25,7 @@ UI1.1
   Wait Until Element Is Enabled   genderCombo
   Wait Until Element Is Enabled   ageCombo
   Click Button   searchButton
-  Table Should Contain   tableToyResult_info  Showing 1 to 30 of 30 entries
+  #Wait Until Element Contains   tableToyResult_info  Showing 1 to 30 of 30 entries   1.0 seconds
   Set Selenium Speed   0.3 seconds
 
 1Search by Criteria
@@ -33,7 +33,7 @@ UI1.1
   Select From List By Label   ageCombo   Baby
   Click Button   searchButton
 #  Table Cell Should Contain   tableToyResult   2   1   Dancing Alligator
-  Table Should Contain   tableToyResult_info  Showing 1 to 4 of 4 entries
+  Wait Until Element Contains   tableToyResult_info  Showing 1 to 4 of 4 entries   1.0 seconds
   Set Selenium Speed   0.3 seconds
 
 1Choose Toy
