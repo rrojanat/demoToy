@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180427 11:48:45.610" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
+<robot generated="20180427 13:52:42.023" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
 <suite source="/Users/deadpool/demoToy/ui_test/HOT6_UI1.robot" id="s1" name="HOT6 UI1">
 <test id="s1-t1" name="UI1.1">
 <kw name="1Open index page">
@@ -9,10 +9,10 @@
 <arg>http://128.199.66.198:8080/toy.html</arg>
 <arg>browser=gc</arg>
 </arguments>
-<msg timestamp="20180427 11:48:46.186" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
-<status status="PASS" endtime="20180427 11:48:51.784" starttime="20180427 11:48:46.186"></status>
+<msg timestamp="20180427 13:52:42.127" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 13:52:45.322" starttime="20180427 13:52:42.127"></status>
 </kw>
-<status status="PASS" endtime="20180427 11:48:51.784" starttime="20180427 11:48:46.185"></status>
+<status status="PASS" endtime="20180427 13:52:45.322" starttime="20180427 13:52:42.126"></status>
 </kw>
 <kw name="1Search All">
 <kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
@@ -20,39 +20,39 @@
 <arguments>
 <arg>genderCombo</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:51.859" starttime="20180427 11:48:51.786"></status>
+<status status="PASS" endtime="20180427 13:52:45.398" starttime="20180427 13:52:45.323"></status>
 </kw>
 <kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
 <doc>Waits until element ``locator`` is enabled.</doc>
 <arguments>
 <arg>ageCombo</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:51.951" starttime="20180427 11:48:51.860"></status>
+<status status="PASS" endtime="20180427 13:52:45.433" starttime="20180427 13:52:45.398"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks button identified by ``locator``.</doc>
 <arguments>
 <arg>searchButton</arg>
 </arguments>
-<msg timestamp="20180427 11:48:51.952" level="INFO">Clicking button 'searchButton'.</msg>
-<status status="PASS" endtime="20180427 11:48:52.060" starttime="20180427 11:48:51.951"></status>
+<msg timestamp="20180427 13:52:45.433" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 13:52:45.720" starttime="20180427 13:52:45.433"></status>
 </kw>
 <kw name="Table Should Contain" library="SeleniumLibrary">
 <doc>Verifies table contains text ``expected``.</doc>
 <arguments>
-<arg>tableToyResult</arg>
+<arg>tableToyResult_info</arg>
 <arg>Showing 1 to 30 of 30 entries</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:52.276" starttime="20180427 11:48:52.060"></status>
+<status status="PASS" endtime="20180427 13:52:46.097" starttime="20180427 13:52:45.720"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.3 seconds</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:52.277" starttime="20180427 11:48:52.276"></status>
+<status status="PASS" endtime="20180427 13:52:46.098" starttime="20180427 13:52:46.097"></status>
 </kw>
-<status status="PASS" endtime="20180427 11:48:52.277" starttime="20180427 11:48:51.785"></status>
+<status status="PASS" endtime="20180427 13:52:46.098" starttime="20180427 13:52:45.323"></status>
 </kw>
 <kw name="1Search by Criteria">
 <kw name="Select From List By Label" library="SeleniumLibrary">
@@ -61,8 +61,8 @@
 <arg>genderCombo</arg>
 <arg>Neutral</arg>
 </arguments>
-<msg timestamp="20180427 11:48:52.279" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
-<status status="PASS" endtime="20180427 11:48:55.018" starttime="20180427 11:48:52.278"></status>
+<msg timestamp="20180427 13:52:46.099" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 13:52:48.110" starttime="20180427 13:52:46.099"></status>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
 <doc>Selects options from selection list ``locator`` by ``labels``.</doc>
@@ -70,33 +70,33 @@
 <arg>ageCombo</arg>
 <arg>Baby</arg>
 </arguments>
-<msg timestamp="20180427 11:48:55.019" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
-<status status="PASS" endtime="20180427 11:48:56.907" starttime="20180427 11:48:55.018"></status>
+<msg timestamp="20180427 13:52:48.111" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 13:52:50.003" starttime="20180427 13:52:48.111"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks button identified by ``locator``.</doc>
 <arguments>
 <arg>searchButton</arg>
 </arguments>
-<msg timestamp="20180427 11:48:56.907" level="INFO">Clicking button 'searchButton'.</msg>
-<status status="PASS" endtime="20180427 11:48:57.858" starttime="20180427 11:48:56.907"></status>
+<msg timestamp="20180427 13:52:50.004" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 13:52:50.953" starttime="20180427 13:52:50.003"></status>
 </kw>
 <kw name="Table Should Contain" library="SeleniumLibrary">
 <doc>Verifies table contains text ``expected``.</doc>
 <arguments>
-<arg>tableToyResult</arg>
+<arg>tableToyResult_info</arg>
 <arg>Showing 1 to 4 of 4 entries</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:59.154" starttime="20180427 11:48:57.859"></status>
+<status status="PASS" endtime="20180427 13:52:52.241" starttime="20180427 13:52:50.953"></status>
 </kw>
 <kw name="Set Selenium Speed" library="SeleniumLibrary">
 <doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
 <arg>0.3 seconds</arg>
 </arguments>
-<status status="PASS" endtime="20180427 11:48:59.155" starttime="20180427 11:48:59.155"></status>
+<status status="PASS" endtime="20180427 13:52:52.242" starttime="20180427 13:52:52.242"></status>
 </kw>
-<status status="PASS" endtime="20180427 11:48:59.155" starttime="20180427 11:48:52.278"></status>
+<status status="PASS" endtime="20180427 13:52:52.242" starttime="20180427 13:52:46.099"></status>
 </kw>
 <kw name="1Choose Toy">
 <kw name="Click Link" library="SeleniumLibrary">
@@ -104,14 +104,14 @@
 <arguments>
 <arg>Dancing Alligator</arg>
 </arguments>
-<msg timestamp="20180427 11:48:59.156" level="INFO">Clicking link 'Dancing Alligator'.</msg>
-<status status="PASS" endtime="20180427 11:49:00.140" starttime="20180427 11:48:59.156"></status>
+<msg timestamp="20180427 13:52:52.243" level="INFO">Clicking link 'Dancing Alligator'.</msg>
+<status status="PASS" endtime="20180427 13:52:53.230" starttime="20180427 13:52:52.243"></status>
 </kw>
-<status status="PASS" endtime="20180427 11:49:00.140" starttime="20180427 11:48:59.155"></status>
+<status status="PASS" endtime="20180427 13:52:53.231" starttime="20180427 13:52:52.242"></status>
 </kw>
-<status status="PASS" endtime="20180427 11:49:00.140" critical="yes" starttime="20180427 11:48:46.185"></status>
+<status status="PASS" endtime="20180427 13:52:53.231" critical="yes" starttime="20180427 13:52:42.126"></status>
 </test>
-<status status="PASS" endtime="20180427 11:49:00.141" starttime="20180427 11:48:45.618"></status>
+<status status="PASS" endtime="20180427 13:52:53.232" starttime="20180427 13:52:42.025"></status>
 </suite>
 <statistics>
 <total>
