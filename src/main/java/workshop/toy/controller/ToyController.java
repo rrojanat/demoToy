@@ -9,7 +9,8 @@ import workshop.toy.repo.ToyRepo;
 import java.math.BigDecimal;
 import java.util.List;
 
-@RestController("/rest")
+@RestController()
+@RequestMapping("/rest")
 public class ToyController {
     @Autowired
     private ToyRepo toyRepo;
@@ -25,15 +26,27 @@ public class ToyController {
     public List<Toy> searchToy(@RequestBody ToyCriteria toyCriteria) {
         String ageId = toyCriteria.getSearchAge();
         String genderId = toyCriteria.getSearchGender();
-        if (!isEmptyString(ageId) && !isEmptyString(genderId)) {
+        if (isSearchByAgeAndGender(ageId, genderId)) {
             return toyRepo.searchToyByAgeAndGender(ageId, genderId);
-        } else if (isEmptyString(ageId) && !isEmptyString(genderId)) {
+        } else if (isSearchByGender(ageId, genderId)) {
             return toyRepo.searchToyByGender(genderId);
-        } else if (!isEmptyString(ageId) && isEmptyString(genderId)) {
+        } else if (isSearchByAge(ageId, genderId)) {
             return toyRepo.searchToyByAge(ageId);
         }
 
         return toyRepo.searchToy();
+    }
+
+    private boolean isSearchByAgeAndGender(String ageId, String genderId) {
+        return !isEmptyString(ageId) && !isEmptyString(genderId);
+    }
+
+    private boolean isSearchByGender(String ageId, String genderId) {
+        return isEmptyString(ageId) && !isEmptyString(genderId);
+    }
+
+    private boolean isSearchByAge(String ageId, String genderId) {
+        return !isEmptyString(ageId) && isEmptyString(genderId);
     }
 
     private boolean isEmptyString(String input) {
