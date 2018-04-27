@@ -1,51 +1,520 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<robot generated="20180427 10:44:01.235" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
+<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/searchtoy.robot" id="s1" name="Searchtoy">
+<test id="s1-t1" name="searchByAgeAndGender">
+<kw name="openSearchToyPage">
+||||||| merged common ancestors
+<robot generated="20180427 10:01:01.710" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
+<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/searchToy.robot" id="s1" name="searchToy">
+<test id="s1-t1" name="searchByAgeAndGender">
+<kw name="openSearchToyPage">
+=======
 <robot generated="20180426 23:28:14.498" generator="Robot 3.0.4 (Python 2.7.12 on linux2)">
 <suite source="/home/chairat/work/demoToy/ui_test/search.robot" id="s1" name="Search">
 <test id="s1-t1" name="1Navigate">
 <kw name="1.1Open index page">
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the given ``url``.</doc>
 <arguments>
+<<<<<<< HEAD
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:44:01.415" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:44:03.953" starttime="20180427 10:44:01.414"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:03.954" starttime="20180427 10:44:01.414"></status>
+</kw>
+<kw name="searchUsingAgeAndGender">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:04.024" starttime="20180427 10:44:03.955"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Baby</arg>
+</arguments>
+<msg timestamp="20180427 10:44:04.025" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 10:44:04.213" starttime="20180427 10:44:04.025"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:04.248" starttime="20180427 10:44:04.214"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Neutral</arg>
+</arguments>
+<msg timestamp="20180427 10:44:04.249" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 10:44:04.329" starttime="20180427 10:44:04.249"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:44:04.330" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:44:04.400" starttime="20180427 10:44:04.329"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>tableToyResult_info</arg>
+<arg>Showing 1 to 4 of 4 entries</arg>
+||||||| merged common ancestors
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:01:01.935" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:01:04.396" starttime="20180427 10:01:01.935"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:04.396" starttime="20180427 10:01:01.934"></status>
+</kw>
+<kw name="searchUsingAgeAndGender">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:04.452" starttime="20180427 10:01:04.398"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Baby</arg>
+</arguments>
+<msg timestamp="20180427 10:01:04.452" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 10:01:04.553" starttime="20180427 10:01:04.452"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:04.586" starttime="20180427 10:01:04.553"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Neutral</arg>
+</arguments>
+<msg timestamp="20180427 10:01:04.586" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 10:01:04.671" starttime="20180427 10:01:04.586"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:01:04.672" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:01:04.739" starttime="20180427 10:01:04.672"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>tableToyResult_info</arg>
+<arg>Showing 1 to 4 of 4 entries</arg>
+=======
 <arg>http://128.199.66.198:8080/toy.html</arg>
 <arg>browser=gc</arg>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </arguments>
+<<<<<<< HEAD
+<status status="PASS" endtime="20180427 10:44:04.658" starttime="20180427 10:44:04.400"></status>
+</kw>
+||||||| merged common ancestors
+=======
 <msg timestamp="20180426 23:28:14.594" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<<<<<<< HEAD
+<msg timestamp="20180427 10:44:05.378" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180427 10:44:05.379" starttime="20180427 10:44:04.658"></status>
+||||||| merged common ancestors
+<msg timestamp="20180427 10:01:10.558" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180427 10:01:10.559" starttime="20180427 10:01:09.947"></status>
+</kw>
+<msg timestamp="20180427 10:01:10.561" level="FAIL">Element with locator 'tableToyResult_info' not found.</msg>
+<status status="FAIL" endtime="20180427 10:01:10.561" starttime="20180427 10:01:04.739"></status>
+=======
 <status status="FAIL" endtime="20180426 23:28:57.910" starttime="20180426 23:28:57.908"></status>
 </kw>
 <msg timestamp="20180426 23:28:57.910" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Execution terminated by signal</msg>
 <status status="FAIL" endtime="20180426 23:28:57.911" starttime="20180426 23:28:14.594"></status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </kw>
+<<<<<<< HEAD
+<status status="PASS" endtime="20180427 10:44:05.379" starttime="20180427 10:44:03.954"></status>
+||||||| merged common ancestors
+<status status="FAIL" endtime="20180427 10:01:10.562" starttime="20180427 10:01:04.397"></status>
+=======
 <status status="FAIL" endtime="20180426 23:28:57.912" starttime="20180426 23:28:14.594"></status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </kw>
+<<<<<<< HEAD
+<status status="PASS" endtime="20180427 10:44:05.379" critical="yes" starttime="20180427 10:44:01.412"></status>
+||||||| merged common ancestors
+<status status="FAIL" endtime="20180427 10:01:10.562" critical="yes" starttime="20180427 10:01:01.932">Element with locator 'tableToyResult_info' not found.</status>
+=======
 <status status="FAIL" endtime="20180426 23:28:57.913" critical="yes" starttime="20180426 23:28:14.593">Execution terminated by signal</status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </test>
+<<<<<<< HEAD
+<test id="s1-t2" name="searchByAge">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:44:05.386" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:44:07.967" starttime="20180427 10:44:05.385"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:07.967" starttime="20180427 10:44:05.384"></status>
+</kw>
+<kw name="searchUsingAgeOnly">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:08.057" starttime="20180427 10:44:07.968"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Baby</arg>
+</arguments>
+<msg timestamp="20180427 10:44:08.058" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 10:44:08.251" starttime="20180427 10:44:08.057"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:44:08.252" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:44:08.330" starttime="20180427 10:44:08.251"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:08.331" starttime="20180427 10:44:07.968"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:08.331" critical="yes" starttime="20180427 10:44:05.382"></status>
+||||||| merged common ancestors
+<test id="s1-t2" name="searchByAge">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:01:10.565" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:01:13.180" starttime="20180427 10:01:10.565"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:13.181" starttime="20180427 10:01:10.564"></status>
+</kw>
+<kw name="searchUsingAgeOnly">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:13.278" starttime="20180427 10:01:13.183"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Baby</arg>
+</arguments>
+<msg timestamp="20180427 10:01:13.279" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 10:01:13.397" starttime="20180427 10:01:13.279"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:01:13.398" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:01:13.479" starttime="20180427 10:01:13.397"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:13.480" starttime="20180427 10:01:13.182"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:13.480" critical="yes" starttime="20180427 10:01:10.563"></status>
+=======
 <test id="s1-t2" name="2Select Toy">
 <tags>
 <tag>robot-exit</tag>
 </tags>
 <status status="FAIL" endtime="20180426 23:28:57.916" critical="yes" starttime="20180426 23:28:57.914">Test execution stopped due to a fatal error.</status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </test>
+<<<<<<< HEAD
+<test id="s1-t3" name="searchByGender">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:44:08.337" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:44:10.892" starttime="20180427 10:44:08.336"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:10.893" starttime="20180427 10:44:08.335"></status>
+</kw>
+<kw name="searchUsingGenderOnly">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:11.002" starttime="20180427 10:44:10.895"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Neutral</arg>
+</arguments>
+<msg timestamp="20180427 10:44:11.003" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 10:44:11.179" starttime="20180427 10:44:11.002"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:44:11.181" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:44:11.248" starttime="20180427 10:44:11.180"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:11.249" starttime="20180427 10:44:10.894"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:11.249" critical="yes" starttime="20180427 10:44:08.333"></status>
+</test>
+<test id="s1-t4" name="searchAll">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:44:11.253" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:44:13.901" starttime="20180427 10:44:11.253"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:13.901" starttime="20180427 10:44:11.252"></status>
+</kw>
+<kw name="searchUsingAll">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:13.970" starttime="20180427 10:44:13.903"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>All</arg>
+</arguments>
+<msg timestamp="20180427 10:44:13.971" level="INFO">Selecting options from selection list 'ageCombo' by label All.</msg>
+<status status="PASS" endtime="20180427 10:44:14.105" starttime="20180427 10:44:13.971"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:44:14.148" starttime="20180427 10:44:14.105"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>All</arg>
+</arguments>
+<msg timestamp="20180427 10:44:14.148" level="INFO">Selecting options from selection list 'genderCombo' by label All.</msg>
+<status status="PASS" endtime="20180427 10:44:14.204" starttime="20180427 10:44:14.148"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:44:14.205" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:44:14.271" starttime="20180427 10:44:14.204"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20180427 10:44:14.743" starttime="20180427 10:44:14.271"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:14.743" starttime="20180427 10:44:13.902"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:44:14.744" critical="yes" starttime="20180427 10:44:11.251"></status>
+||||||| merged common ancestors
+<test id="s1-t3" name="searchByGender">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:01:13.485" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:01:15.990" starttime="20180427 10:01:13.484"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:15.991" starttime="20180427 10:01:13.483"></status>
+</kw>
+<kw name="searchUsingGenderOnly">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:16.097" starttime="20180427 10:01:15.992"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Neutral</arg>
+</arguments>
+<msg timestamp="20180427 10:01:16.098" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 10:01:16.197" starttime="20180427 10:01:16.097"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:01:16.198" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:01:16.267" starttime="20180427 10:01:16.198"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:16.267" starttime="20180427 10:01:15.991"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:16.268" critical="yes" starttime="20180427 10:01:13.482"></status>
+</test>
+<test id="s1-t4" name="searchAll">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 10:01:16.271" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 10:01:18.874" starttime="20180427 10:01:16.270"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:18.874" starttime="20180427 10:01:16.270"></status>
+</kw>
+<kw name="searchUsingAll">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:18.955" starttime="20180427 10:01:18.876"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>All</arg>
+</arguments>
+<msg timestamp="20180427 10:01:18.956" level="INFO">Selecting options from selection list 'ageCombo' by label All.</msg>
+<status status="PASS" endtime="20180427 10:01:19.035" starttime="20180427 10:01:18.956"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 10:01:19.075" starttime="20180427 10:01:19.035"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>All</arg>
+</arguments>
+<msg timestamp="20180427 10:01:19.076" level="INFO">Selecting options from selection list 'genderCombo' by label All.</msg>
+<status status="PASS" endtime="20180427 10:01:19.136" starttime="20180427 10:01:19.075"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 10:01:19.137" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 10:01:19.232" starttime="20180427 10:01:19.136"></status>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20180427 10:01:19.857" starttime="20180427 10:01:19.233"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:19.858" starttime="20180427 10:01:18.875"></status>
+</kw>
+<status status="PASS" endtime="20180427 10:01:19.858" critical="yes" starttime="20180427 10:01:16.269"></status>
+=======
 <test id="s1-t3" name="3Shopping List">
 <tags>
 <tag>robot-exit</tag>
 </tags>
 <status status="FAIL" endtime="20180426 23:28:57.929" critical="yes" starttime="20180426 23:28:57.928">Test execution stopped due to a fatal error.</status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </test>
+<<<<<<< HEAD
+<status status="PASS" endtime="20180427 10:44:14.748" starttime="20180427 10:44:01.238"></status>
+||||||| merged common ancestors
+<status status="FAIL" endtime="20180427 10:01:19.861" starttime="20180427 10:01:01.713"></status>
+=======
 <status status="FAIL" endtime="20180426 23:28:57.930" starttime="20180426 23:28:14.499"></status>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </suite>
 <statistics>
 <total>
+<<<<<<< HEAD
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+||||||| merged common ancestors
+<stat fail="1" pass="3">Critical Tests</stat>
+<stat fail="1" pass="3">All Tests</stat>
+=======
 <stat fail="3" pass="0">Critical Tests</stat>
 <stat fail="3" pass="0">All Tests</stat>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </total>
 <tag>
 <stat info="combined" fail="1" combined="NOT robot-exit" pass="0">NOT robot-exit</stat>
 <stat fail="2" pass="0">robot-exit</stat>
 </tag>
 <suite>
+<<<<<<< HEAD
+<stat fail="0" id="s1" name="Searchtoy" pass="4">Searchtoy</stat>
+||||||| merged common ancestors
+<stat fail="1" id="s1" name="searchToy" pass="3">searchToy</stat>
+=======
 <stat fail="3" id="s1" name="Search" pass="0">Search</stat>
+>>>>>>> c44b25bd35f6366e92d933bb2b8630008036b2c9
 </suite>
 </statistics>
 <errors>
