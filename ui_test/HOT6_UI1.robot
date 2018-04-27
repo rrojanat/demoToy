@@ -29,6 +29,8 @@ UI1.1
   Set Selenium Speed   0.3 seconds
 
 1Search by Criteria
+  Wait Until Element Contains   genderCombo   Neutral   1.0 seconds
+  Wait Until Element Contains   ageCombo   Baby   1.0 seconds
   Select From List By Label   genderCombo   Neutral
   Select From List By Label   ageCombo   Baby
   Click Button   searchButton
