@@ -27,6 +27,8 @@ public class CartDetailWithToy {
     private String stockStatus;
     @JsonView
     private String brand;
+    @JsonView
+    private BigDecimal stockQty;
 
     public CartDetailWithToy() {
     }
@@ -109,5 +111,13 @@ public class CartDetailWithToy {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public BigDecimal getStockQty() {
+        return stockQty;
+    }
+
+    public void setStockQty(BigDecimal stockQty) {
+        this.stockQty = stockQty;
     }
 }
