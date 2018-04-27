@@ -1,13 +1,11 @@
 package workshop.toy.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
 
-@JsonIgnoreProperties
-public class CartDetail {
+public class CartDetailWithToy {
     @JsonView
     @Id
     private BigDecimal cartDetailId;
@@ -19,16 +17,20 @@ public class CartDetail {
     private BigDecimal qty;
     @JsonView
     private BigDecimal detailPrice;
+    @JsonView
+    private String name;
+    @JsonView
+    private String gender;
+    @JsonView
+    private String age;
+    @JsonView
+    private String stockStatus;
+    @JsonView
+    private String brand;
+    @JsonView
+    private BigDecimal stockQty;
 
-    public CartDetail() {
-    }
-
-    public CartDetail(BigDecimal cartDetailId, BigDecimal cartId, BigDecimal toyId, BigDecimal qty, BigDecimal detailPrice) {
-        this.cartDetailId = cartDetailId;
-        this.cartId = cartId;
-        this.toyId = toyId;
-        this.qty = qty;
-        this.detailPrice = detailPrice;
+    public CartDetailWithToy() {
     }
 
     public BigDecimal getCartDetailId() {
@@ -69,5 +71,53 @@ public class CartDetail {
 
     public void setDetailPrice(BigDecimal detailPrice) {
         this.detailPrice = detailPrice;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getStockStatus() {
+        return stockStatus;
+    }
+
+    public void setStockStatus(String stockStatus) {
+        this.stockStatus = stockStatus;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public BigDecimal getStockQty() {
+        return stockQty;
+    }
+
+    public void setStockQty(BigDecimal stockQty) {
+        this.stockQty = stockQty;
     }
 }

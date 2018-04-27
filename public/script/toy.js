@@ -58,6 +58,33 @@ var toy = (function ($) {
                 data: JSON.stringify(cartDetail)
             });
         },
+        getCart: function (cartId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartId,
+                "method": "GET",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        getCartDetailByCartId: function (cartId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/' + cartId + "/detail",
+                "method": "GET",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
+        getDeleteCartDetail: function (cartDetailId) {
+            return $.ajax({
+                "async": true,
+                "cache": false,
+                "url": '/rest/cart/detail/' + cartDetailId,
+                "method": "DELETE",
+                "contentType": "application/json; charset=utf-8"
+            });
+        },
         /////   -----------------------
         populateToyResultTable: function (datalist) {
             $('#tableToyResult').DataTable({
@@ -102,6 +129,10 @@ var toy = (function ($) {
                     $('#2toyShipping').text(response.shippingMethod);
                     $('#2toyStock').text(response.stockStatus);
                     $('#2toyStockQty').text(response.qty);
+                    var selectedtoyQty = $('#2toyQty');
+                    for (var ii = 1; ii <= response.qty; ii++) {
+                        selectedtoyQty.append('<option value=' + ii + '>' + ii + '</option>');
+                    }
                     $('#2toyImg').attr('src', response.toyImg);
                     $('#searchToy').fadeOut(500, function () {
                         $('#toyName').fadeIn(500);
@@ -120,6 +151,7 @@ var toy = (function ($) {
                         $.when(toy.addNewCartDetail(cartDetail))
                             .done(function (resCartDetail) {
                                 $('#toyName').fadeOut(500, function () {
+                                    toy.renderShoppingCart(resCart.cartId);
                                     $('#shoppingCart').fadeIn(500);
                                 });
                             });
@@ -131,10 +163,78 @@ var toy = (function ($) {
                 $.when(toy.addNewCartDetail(cartDetail))
                     .done(function (resCartDetail) {
                         $('#toyName').fadeOut(500, function () {
+                            toy.renderShoppingCart(cartId);
                             $('#shoppingCart').fadeIn(500);
                         });
                     });
             }
+        },
+        renderShoppingCart: function (cartId) {
+            $.when(toy.getCart(cartId), toy.getCartDetailByCartId(cartId))
+                .done(function (respCart, respCartDetail) {
+                    toy.populateShoppingCartDetail(respCart[0], respCartDetail[0]);
+                });
+        },
+        populateShoppingCartDetail: function (respCart, cartDetails) {
+            if ($.fn.DataTable.isDataTable('#tableShoppingCart')) {
+                $('#tableShoppingCart').DataTable().destroy();
+            }
+            if (cartDetails == null || cartDetails.length < 1) {
+                $('#ProcessCheckOut').hide();
+            } else {
+                $('#ProcessCheckOut').show();
+            }
+            $('#tableShoppingCart').DataTable({
+                "searching": false,
+                "info": false,
+                "ordering": false,
+                "destroy": true,
+                "paging": false,
+                "data": cartDetails,
+                "columns": [{
+                        "data": "cartDetailId",
+                        "className": "dt-body-left",
+                        "render": function (data, type, row) {
+                            var items = row.name + " By " + row.brand + "<BR>";
+                            items += row.gender + "<BR>";
+                            items += row.age + "<BR>";
+                            items += row.stockStatus + "<BR>";
+                            items += "<button class='ui primary button' onclick='return toy.deleteToyFromShoppingCart(" +
+                                respCart.cartId + "," + row.cartDetailId + ")'>Delete</button>";
+                            console.log(items);
+                            return items;
+                        }
+                    },
+                    {
+                        "data": "qty",
+                        "className": "dt-body-center",
+                        "render": function (data, type, row) {
+                            var selectQty = "<select name='selectedQty'>";
+                            var selected = ""
+                            for (var ii = 1; ii <= row.stockQty; ii++) {
+                                if (ii = data) {
+                                    selected = "selected";
+                                } else {
+                                    selected = "";
+                                }
+                                selectQty += "<option value='" + ii + "' " + selected + ">" + ii + "</option>"
+                            }
+                            selectQty += "</select>";
+                            return selectQty;
+                        }
+                    },
+                    {
+                        "data": "detailPrice",
+                        "className": "dt-body-right"
+                    }
+                ]
+            });
+        },
+        deleteToyFromShoppingCart: function (cartId, cartDetailId) {
+            $.when(toy.getDeleteCartDetail(cartDetailId))
+                .done(function (respDeletedCartDetail) {
+                    toy.renderShoppingCart(cartId);
+                });
         },
         /////   -----------------------
     }

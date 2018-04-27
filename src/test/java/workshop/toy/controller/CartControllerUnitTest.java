@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 import workshop.toy.model.CartDetail;
+import workshop.toy.model.CartDetailWithToy;
 import workshop.toy.repo.CartDetailRepo;
 
 import java.math.BigDecimal;
@@ -32,10 +33,10 @@ public class CartControllerUnitTest {
     }
     @Test
     public void testCartDetailEmpty() throws Exception {
-        List<CartDetail> expected = new ArrayList<CartDetail>();
+        List<CartDetailWithToy> expected = new ArrayList<CartDetailWithToy>();
         given(cartDetailRepo.findCartDetailByCartId(new BigDecimal(1)))
                 .willReturn(expected);
-        List<CartDetail> cartDetailList = cartController.getCartDetailByCartId(new BigDecimal(1));
+        List<CartDetailWithToy> cartDetailList = cartController.getCartDetailByCartId(new BigDecimal(1));
         assertEquals(expected.size(), cartDetailList.size());
     }
 }

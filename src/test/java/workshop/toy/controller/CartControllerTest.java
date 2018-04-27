@@ -1,24 +1,16 @@
 package workshop.toy.controller;
 
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import workshop.toy.model.Cart;
-import workshop.toy.model.CartDetail;
-import workshop.toy.model.Combo;
-import workshop.toy.model.Toy;
+import workshop.toy.model.*;
 import workshop.toy.repo.CartDetailRepo;
 import workshop.toy.repo.CartRepo;
-import workshop.toy.repo.GenderRepo;
 import workshop.toy.repo.ToyRepo;
 
 import java.math.BigDecimal;
@@ -48,7 +40,7 @@ public class CartControllerTest {
 
     @Test
     public void testCartDetailEmpty() {
-        List<CartDetail> cartDats = new ArrayList<CartDetail>();
+        List<CartDetailWithToy> cartDats = new ArrayList<CartDetailWithToy>();
         given(cartDetailRepo.findCartDetailByCartId(new BigDecimal("1")))
                 .willReturn(cartDats);
         ResponseEntity<List> response = restTemplate.getForEntity("/rest/cart/1/detail", List.class);
@@ -57,18 +49,27 @@ public class CartControllerTest {
     }
 
     @Test
+    public void testAddToCart() {
+        Cart cart = new Cart();
+        Cart newCart = new Cart();
+        newCart.setCartId(new BigDecimal("1"));
+        given(cartRepo.save(cart))
+                .willReturn(cart);
+    }
+
+    @Test
     public void testCalculateCartPrice() {
         Cart cart = new Cart();
         cart.setCartId(new BigDecimal("1"));
 
-        List<CartDetail> cartDetailList = new ArrayList<CartDetail>();
-        CartDetail cartDetail1 = new CartDetail();
+        List<CartDetailWithToy> cartDetailList = new ArrayList<CartDetailWithToy>();
+        CartDetailWithToy cartDetail1 = new CartDetailWithToy();
         cartDetail1.setCartDetailId(new BigDecimal("1"));
         cartDetail1.setCartId(new BigDecimal("1"));
         cartDetail1.setToyId(new BigDecimal("1"));
         cartDetail1.setQty(new BigDecimal("2"));
 
-        CartDetail cartDetail2 = new CartDetail();
+        CartDetailWithToy cartDetail2 = new CartDetailWithToy();
         cartDetail2.setCartDetailId(new BigDecimal("1"));
         cartDetail2.setCartId(new BigDecimal("1"));
         cartDetail2.setToyId(new BigDecimal("2"));
@@ -106,14 +107,14 @@ public class CartControllerTest {
 
     @Test
     public void testCalculateCartDetailPrice() {
-        List<CartDetail> cartDetailList = new ArrayList<CartDetail>();
-        CartDetail cartDetail1 = new CartDetail();
+        List<CartDetailWithToy> cartDetailList = new ArrayList<CartDetailWithToy>();
+        CartDetailWithToy cartDetail1 = new CartDetailWithToy();
         cartDetail1.setCartDetailId(new BigDecimal("1"));
         cartDetail1.setCartId(new BigDecimal("1"));
         cartDetail1.setToyId(new BigDecimal("1"));
         cartDetail1.setQty(new BigDecimal("2"));
 
-        CartDetail cartDetail2 = new CartDetail();
+        CartDetailWithToy cartDetail2 = new CartDetailWithToy();
         cartDetail2.setCartDetailId(new BigDecimal("1"));
         cartDetail2.setCartId(new BigDecimal("1"));
         cartDetail2.setToyId(new BigDecimal("2"));
@@ -147,7 +148,65 @@ public class CartControllerTest {
     }
 
     @Test
-    public void testUpdateAddress() {
+    public void testUpdateCartAddress() {
+        Cart cart = new Cart();
+        cart.setCartId(new BigDecimal("1"));
+
+        given(cartRepo.findById(new BigDecimal("1")))
+                .willReturn(Optional.of(cart));
+
+        Cart newCart = new Cart();
+        newCart.setCartId(new BigDecimal("1"));
+        newCart.setShoppingName("Test Name");
+        newCart.setAddr1("Test Address 1");
+        newCart.setAddr2("Test Address 2");
+        newCart.setCity("Test City");
+        newCart.setProvince("Test Province");
+        newCart.setPostcode("Test Postcode");
+
+        given(cartRepo.save(newCart))
+                .willReturn(newCart);
+
+        restTemplate.put("/rest/cart/1/address", newCart);
+
+        ResponseEntity<Cart> response = restTemplate.getForEntity("/rest/cart/1", Cart.class);
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals("Test Name", response.getBody().getShoppingName());
+        assertEquals("Test Address 1", response.getBody().getAddr1());
+        assertEquals("Test Address 2", response.getBody().getAddr2());
+        assertEquals("Test City", response.getBody().getCity());
+        assertEquals("Test Province", response.getBody().getProvince());
+        assertEquals("Test Postcode", response.getBody().getPostcode());
+    }
+
+    @Test
+    public void testUpdateCartDetailQty() {
+        CartDetail cartDetail = new CartDetail();
+        cartDetail.setCartDetailId(new BigDecimal("1"));
+        cartDetail.setCartId(new BigDecimal("1"));
+        cartDetail.setToyId(new BigDecimal("1"));
+        cartDetail.setQty(new BigDecimal("2"));
+
+        given(cartDetailRepo.findById(new BigDecimal("1")))
+                .willReturn(Optional.of(cartDetail));
+
+        CartDetail newCartDetail = new CartDetail();
+        newCartDetail.setCartDetailId(new BigDecimal("1"));
+        newCartDetail.setCartId(new BigDecimal("1"));
+        newCartDetail.setToyId(new BigDecimal("1"));
+        newCartDetail.setQty(new BigDecimal("3"));
+
+        given(cartDetailRepo.save(newCartDetail))
+                .willReturn(newCartDetail);
+
+        restTemplate.put("/rest/cart/detail/1/qty", newCartDetail);
+        ResponseEntity<CartDetail> response = restTemplate.getForEntity("/rest/cart/detail/1", CartDetail.class);
+        assertEquals(200, response.getStatusCode().value());
+        assertEquals(new BigDecimal("3"), response.getBody().getQty());
+    }
+
+    @Test
+    public void testRemoveFromCart() {
 
     }
 }
