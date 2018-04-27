@@ -80,7 +80,7 @@ var toy = (function ($) {
             return $.ajax({
                 "async": true,
                 "cache": false,
-                "url": '/rest/cart/detail' + cartDetailId,
+                "url": '/rest/cart/detail/' + cartDetailId,
                 "method": "DELETE",
                 "contentType": "application/json; charset=utf-8"
             });
@@ -129,6 +129,10 @@ var toy = (function ($) {
                     $('#2toyShipping').text(response.shippingMethod);
                     $('#2toyStock').text(response.stockStatus);
                     $('#2toyStockQty').text(response.qty);
+                    var selectedtoyQty = $('#2toyQty');
+                    for (var ii = 1; ii <= response.qty; ii++) {
+                        selectedtoyQty.append('<option value=' + ii + '>' + ii + '</option>');
+                    }
                     $('#2toyImg').attr('src', response.toyImg);
                     $('#searchToy').fadeOut(500, function () {
                         $('#toyName').fadeIn(500);
@@ -172,11 +176,20 @@ var toy = (function ($) {
                 });
         },
         populateShoppingCartDetail: function (respCart, cartDetails) {
+            if ($.fn.DataTable.isDataTable('#tableShoppingCart')) {
+                $('#tableShoppingCart').DataTable().destroy();
+            }
+            if (cartDetails == null || cartDetails.length < 1) {
+                $('#ProcessCheckOut').hide();
+            } else {
+                $('#ProcessCheckOut').show();
+            }
             $('#tableShoppingCart').DataTable({
                 "searching": false,
                 "info": false,
                 "ordering": false,
-                "paging": true,
+                "destroy": true,
+                "paging": false,
                 "data": cartDetails,
                 "columns": [{
                         "data": "cartDetailId",
@@ -186,14 +199,29 @@ var toy = (function ($) {
                             items += row.gender + "<BR>";
                             items += row.age + "<BR>";
                             items += row.stockStatus + "<BR>";
-                            items += "<button class='ui primary button' onclick='return toy.deleteToyFromShoppingCart("
-                            respCart.cartId + "," + cartDetail.cartDetailId + ")'>Delete</button>";
+                            items += "<button class='ui primary button' onclick='return toy.deleteToyFromShoppingCart(" +
+                                respCart.cartId + "," + row.cartDetailId + ")'>Delete</button>";
+                            console.log(items);
                             return items;
                         }
                     },
                     {
                         "data": "qty",
-                        "className": "dt-body-center"
+                        "className": "dt-body-center",
+                        "render": function (data, type, row) {
+                            var selectQty = "<select name='selectedQty'>";
+                            var selected = ""
+                            for (var ii = 1; ii <= row.stockQty; ii++) {
+                                if (ii = data) {
+                                    selected = "selected";
+                                } else {
+                                    selected = "";
+                                }
+                                selectQty += "<option value='" + ii + "' " + selected + ">" + ii + "</option>"
+                            }
+                            selectQty += "</select>";
+                            return selectQty;
+                        }
                     },
                     {
                         "data": "detailPrice",
