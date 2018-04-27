@@ -9,18 +9,18 @@ import workshop.toy.repo.ToyRepo;
 import java.math.BigDecimal;
 import java.util.List;
 
-@RestController
+@RestController("/rest")
 public class ToyController {
     @Autowired
     private ToyRepo toyRepo;
 
-    @GetMapping("/rest/toy/{toyId}")
+    @GetMapping("/toy/{toyId}")
     @ResponseBody
     public Toy getToy(@PathVariable String toyId) {
         return toyRepo.getToyById(new BigDecimal(toyId));
     }
 
-    @PostMapping("/rest/toy")
+    @PostMapping("/toy")
     @ResponseBody
     public List<Toy> searchToy(@RequestBody ToyCriteria toyCriteria) {
         String ageId = toyCriteria.getSearchAge();
@@ -37,9 +37,6 @@ public class ToyController {
     }
 
     private boolean isEmptyString(String input) {
-        if (input == null || input.equalsIgnoreCase("")) {
-            return true;
-        }
-        return false;
+        return input == null || input.equalsIgnoreCase("");
     }
 }
