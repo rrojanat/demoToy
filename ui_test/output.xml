@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180427 14:40:33.332" generator="Robot 3.0.4 (Python 2.7.14 on darwin)">
+<suite source="/Users/thitipong/IdeaProjects/demoToy/ui_test/checkoutSingleToy.robot" id="s1" name="checkoutSingleToy">
+<test id="s1-t1" name="searchByAgeAndGender">
+<kw name="openSearchToyPage">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${SEARCHTOY URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180427 14:40:33.494" level="INFO">Opening browser 'chrome' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 14:40:36.422" starttime="20180427 14:40:33.493"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:36.424" starttime="20180427 14:40:33.492"></status>
+</kw>
+<kw name="searchUsingAgeAndGender">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>ageCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:36.502" starttime="20180427 14:40:36.426"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>ageCombo</arg>
+<arg>Toddler</arg>
+</arguments>
+<msg timestamp="20180427 14:40:36.503" level="INFO">Selecting options from selection list 'ageCombo' by label Toddler.</msg>
+<status status="PASS" endtime="20180427 14:40:36.686" starttime="20180427 14:40:36.502"></status>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is enabled.</doc>
+<arguments>
+<arg>genderCombo</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:36.723" starttime="20180427 14:40:36.686"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>genderCombo</arg>
+<arg>Male</arg>
+</arguments>
+<msg timestamp="20180427 14:40:36.725" level="INFO">Selecting options from selection list 'genderCombo' by label Male.</msg>
+<status status="PASS" endtime="20180427 14:40:36.811" starttime="20180427 14:40:36.724"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>searchButton</arg>
+</arguments>
+<msg timestamp="20180427 14:40:36.812" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 14:40:36.879" starttime="20180427 14:40:36.811"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>tableToyResult_info</arg>
+<arg>Showing 1 to 1 of 1 entries</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:37.145" starttime="20180427 14:40:36.879"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180427 14:40:37.894" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180427 14:40:37.895" starttime="20180427 14:40:37.145"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:37.895" starttime="20180427 14:40:36.425"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:37.895" critical="yes" starttime="20180427 14:40:33.491"></status>
+</test>
+<test id="s1-t2" name="selectToy">
+<kw name="checkName">
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>Melody Express Musical Train</arg>
+</arguments>
+<msg timestamp="20180427 14:40:37.902" level="INFO">Clicking link 'Melody Express Musical Train'.</msg>
+<status status="PASS" endtime="20180427 14:40:38.036" starttime="20180427 14:40:37.900"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>2toyName</arg>
+<arg>Melody Express Musical Train</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:38.793" starttime="20180427 14:40:38.036"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:38.794" starttime="20180427 14:40:37.899"></status>
+</kw>
+<kw name="checkImage">
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>2toyImg</arg>
+</arguments>
+<msg timestamp="20180427 14:40:38.871" level="INFO">Element '2toyImg' is displayed.</msg>
+<status status="PASS" endtime="20180427 14:40:38.872" starttime="20180427 14:40:38.795"></status>
+</kw>
+<kw name="Page Should Contain Image" library="SeleniumLibrary">
+<doc>Verifies image identified by ``locator`` is found from current page.</doc>
+<arguments>
+<arg>2toyImg</arg>
+<arg>/img/28.jpg</arg>
+</arguments>
+<msg timestamp="20180427 14:40:38.923" level="INFO">Current page contains image '2toyImg'.</msg>
+<status status="PASS" endtime="20180427 14:40:38.923" starttime="20180427 14:40:38.872"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:38.924" starttime="20180427 14:40:38.794"></status>
+</kw>
+<kw name="checkQty">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>2toyStockQty</arg>
+<arg>20</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:39.009" starttime="20180427 14:40:38.930"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:39.010" starttime="20180427 14:40:38.926"></status>
+</kw>
+<kw name="checkStatus">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>2toyStock</arg>
+<arg>In Stock</arg>
+</arguments>
+<status status="PASS" endtime="20180427 14:40:39.092" starttime="20180427 14:40:39.013"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:39.093" starttime="20180427 14:40:39.010"></status>
+</kw>
+<kw name="addToCart">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>AddToCart</arg>
+</arguments>
+<msg timestamp="20180427 14:40:39.095" level="INFO">Clicking button 'AddToCart'.</msg>
+<status status="PASS" endtime="20180427 14:40:39.197" starttime="20180427 14:40:39.095"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180427 14:40:40.397" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180427 14:40:40.397" starttime="20180427 14:40:39.198"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:40.397" starttime="20180427 14:40:39.093"></status>
+</kw>
+<status status="PASS" endtime="20180427 14:40:40.397" critical="yes" starttime="20180427 14:40:37.897"></status>
+</test>
+<test id="s1-t3" name="CheckoutSingleItem">
+<kw name="proceedCheckout">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>ProcessCheckOut</arg>
+</arguments>
+<msg timestamp="20180427 14:40:40.401" level="INFO">Clicking button 'ProcessCheckOut'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180427 14:41:35.498" level="FAIL">WebDriverException: Message: no such session
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.2 x86_64)
+</msg>
+<status status="FAIL" endtime="20180427 14:41:35.498" starttime="20180427 14:41:35.473"></status>
+</kw>
+<msg timestamp="20180427 14:41:35.499" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: no such session
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.2 x86_64)
+</msg>
+<msg timestamp="20180427 14:41:35.504" level="FAIL">WebDriverException: Message: unknown error: session deleted because of page crash
+from unknown error: cannot determine loading status
+from tab crashed
+  (Session info: chrome=66.0.3359.139)
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.2 x86_64)
+</msg>
+<status status="FAIL" endtime="20180427 14:41:35.505" starttime="20180427 14:40:40.401"></status>
+</kw>
+<status status="FAIL" endtime="20180427 14:41:35.506" starttime="20180427 14:40:40.400"></status>
+</kw>
+<status status="FAIL" endtime="20180427 14:41:35.506" critical="yes" starttime="20180427 14:40:40.398">WebDriverException: Message: unknown error: session deleted because of page crash
+from unknown error: cannot determine loading status
+from tab crashed
+  (Session info: chrome=66.0.3359.139)
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.2 x86_64)
+</status>
+</test>
+<status status="FAIL" endtime="20180427 14:41:35.510" starttime="20180427 14:40:33.336"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="2">Critical Tests</stat>
+<stat fail="1" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="checkoutSingleToy" pass="2">checkoutSingleToy</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20180427 14:41:35.499" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: WebDriverException: Message: no such session
+  (Driver info: chromedriver=2.38.552518 (183d19265345f54ce39cbb94cf81ba5f15905011),platform=Mac OS X 10.13.2 x86_64)
+</msg>
+</errors>
+</robot>
