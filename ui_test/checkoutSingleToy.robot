@@ -30,7 +30,6 @@ searchUsingAgeAndGender
   Select From List By Label   genderCombo   Male
   Click Button   searchButton
   Wait Until Element Contains    tableToyResult_info    Showing 1 to 1 of 1 entries
-  Capture Page Screenshot
 checkName
   Click Link    Melody Express Musical Train
   Wait Until Element Contains    2toyName    Melody Express Musical Train
@@ -42,16 +41,16 @@ checkQty
 checkStatus
   Wait Until Element Contains    2toyStock    In Stock
 addToCart
+  Wait Until Element Is Visible    AddToCart
   Click Button    AddToCart
-  Capture Page Screenshot
 proceedCheckout
+  Wait Until Element Is Visible    ProcessCheckOut
   Click Button    ProcessCheckOut
-  Capture Page Screenshot
+  Wait Until Element Is Visible    4FullName
   Input Text    4FullName    ฐิติพงษ์ กาญจนาภา
   Input Text    4Address1    99 หมู่ 5 ตำบลบ้านระกาศ
   Input Text    4City    บางบ่อ
   Input Text    4Province    สมุทรปราการ
   Input Text    4Postcode    10560
-  Capture Page Screenshot
   Click Button    4Confirm
   Close All Browsers
