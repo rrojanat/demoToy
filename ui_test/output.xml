@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20180427 10:38:11.367" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
+<robot generated="20180427 11:16:40.880" generator="Robot 3.0.3 (Python 2.7.10 on darwin)">
 <suite source="/Users/deadpool/demoToy/ui_test/HOT6_UI1.robot" id="s1" name="HOT6 UI1">
 <test id="s1-t1" name="UI1.1">
 <kw name="1Open index page">
@@ -9,10 +9,10 @@
 <arg>http://128.199.66.198:8080/toy.html</arg>
 <arg>browser=gc</arg>
 </arguments>
-<msg timestamp="20180427 10:38:12.052" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
-<status status="PASS" endtime="20180427 10:38:18.885" starttime="20180427 10:38:12.051"></status>
+<msg timestamp="20180427 11:16:41.423" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/toy.html'.</msg>
+<status status="PASS" endtime="20180427 11:16:45.606" starttime="20180427 11:16:41.423"></status>
 </kw>
-<status status="PASS" endtime="20180427 10:38:18.886" starttime="20180427 10:38:12.051"></status>
+<status status="PASS" endtime="20180427 11:16:45.607" starttime="20180427 11:16:41.423"></status>
 </kw>
 <kw name="1Search All">
 <kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
@@ -20,22 +20,22 @@
 <arguments>
 <arg>genderCombo</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:18.974" starttime="20180427 10:38:18.887"></status>
+<status status="PASS" endtime="20180427 11:16:45.676" starttime="20180427 11:16:45.608"></status>
 </kw>
 <kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
 <doc>Waits until element ``locator`` is enabled.</doc>
 <arguments>
 <arg>ageCombo</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:19.065" starttime="20180427 10:38:18.974"></status>
+<status status="PASS" endtime="20180427 11:16:45.777" starttime="20180427 11:16:45.676"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks button identified by ``locator``.</doc>
 <arguments>
 <arg>searchButton</arg>
 </arguments>
-<msg timestamp="20180427 10:38:19.065" level="INFO">Clicking button 'searchButton'.</msg>
-<status status="PASS" endtime="20180427 10:38:19.159" starttime="20180427 10:38:19.065"></status>
+<msg timestamp="20180427 11:16:45.778" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 11:16:45.891" starttime="20180427 11:16:45.777"></status>
 </kw>
 <kw name="Table Should Contain" library="SeleniumLibrary">
 <doc>Verifies table contains text ``expected``.</doc>
@@ -43,17 +43,16 @@
 <arg>tableToyResult_info</arg>
 <arg>Showing 1 to 30 of 30 entries</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:19.384" starttime="20180427 10:38:19.159"></status>
+<status status="PASS" endtime="20180427 11:16:46.121" starttime="20180427 11:16:45.892"></status>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
-<arg>Showing</arg>
-<arg>3 seconds</arg>
+<arg>0.3 seconds</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:19.410" starttime="20180427 10:38:19.384"></status>
+<status status="PASS" endtime="20180427 11:16:46.122" starttime="20180427 11:16:46.121"></status>
 </kw>
-<status status="PASS" endtime="20180427 10:38:19.410" starttime="20180427 10:38:18.886"></status>
+<status status="PASS" endtime="20180427 11:16:46.122" starttime="20180427 11:16:45.607"></status>
 </kw>
 <kw name="1Search by Criteria">
 <kw name="Select From List By Label" library="SeleniumLibrary">
@@ -62,8 +61,8 @@
 <arg>genderCombo</arg>
 <arg>Neutral</arg>
 </arguments>
-<msg timestamp="20180427 10:38:19.411" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
-<status status="PASS" endtime="20180427 10:38:19.494" starttime="20180427 10:38:19.411"></status>
+<msg timestamp="20180427 11:16:46.124" level="INFO">Selecting options from selection list 'genderCombo' by label Neutral.</msg>
+<status status="PASS" endtime="20180427 11:16:48.031" starttime="20180427 11:16:46.123"></status>
 </kw>
 <kw name="Select From List By Label" library="SeleniumLibrary">
 <doc>Selects options from selection list ``locator`` by ``labels``.</doc>
@@ -71,16 +70,16 @@
 <arg>ageCombo</arg>
 <arg>Baby</arg>
 </arguments>
-<msg timestamp="20180427 10:38:19.495" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
-<status status="PASS" endtime="20180427 10:38:19.572" starttime="20180427 10:38:19.494"></status>
+<msg timestamp="20180427 11:16:48.032" level="INFO">Selecting options from selection list 'ageCombo' by label Baby.</msg>
+<status status="PASS" endtime="20180427 11:16:49.922" starttime="20180427 11:16:48.031"></status>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <doc>Clicks button identified by ``locator``.</doc>
 <arguments>
 <arg>searchButton</arg>
 </arguments>
-<msg timestamp="20180427 10:38:19.573" level="INFO">Clicking button 'searchButton'.</msg>
-<status status="PASS" endtime="20180427 10:38:19.625" starttime="20180427 10:38:19.573"></status>
+<msg timestamp="20180427 11:16:49.922" level="INFO">Clicking button 'searchButton'.</msg>
+<status status="PASS" endtime="20180427 11:16:50.866" starttime="20180427 11:16:49.922"></status>
 </kw>
 <kw name="Table Should Contain" library="SeleniumLibrary">
 <doc>Verifies table contains text ``expected``.</doc>
@@ -88,17 +87,16 @@
 <arg>tableToyResult_info</arg>
 <arg>Showing 1 to 4 of 4 entries</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:19.765" starttime="20180427 10:38:19.625"></status>
+<status status="PASS" endtime="20180427 11:16:52.152" starttime="20180427 11:16:50.867"></status>
 </kw>
-<kw name="Wait Until Page Contains" library="SeleniumLibrary">
-<doc>Waits until ``text`` appears on current page.</doc>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
 <arguments>
-<arg>Showing</arg>
-<arg>3 seconds</arg>
+<arg>0.3 seconds</arg>
 </arguments>
-<status status="PASS" endtime="20180427 10:38:19.777" starttime="20180427 10:38:19.765"></status>
+<status status="PASS" endtime="20180427 11:16:52.153" starttime="20180427 11:16:52.152"></status>
 </kw>
-<status status="PASS" endtime="20180427 10:38:19.777" starttime="20180427 10:38:19.411"></status>
+<status status="PASS" endtime="20180427 11:16:52.153" starttime="20180427 11:16:46.123"></status>
 </kw>
 <kw name="1Choose Toy">
 <kw name="Click Link" library="SeleniumLibrary">
@@ -106,24 +104,128 @@
 <arguments>
 <arg>Dancing Alligator</arg>
 </arguments>
-<msg timestamp="20180427 10:38:19.778" level="INFO">Clicking link 'Dancing Alligator'.</msg>
-<status status="PASS" endtime="20180427 10:38:19.857" starttime="20180427 10:38:19.778"></status>
+<msg timestamp="20180427 11:16:52.154" level="INFO">Clicking link 'Dancing Alligator'.</msg>
+<status status="PASS" endtime="20180427 11:16:53.136" starttime="20180427 11:16:52.153"></status>
 </kw>
-<status status="PASS" endtime="20180427 10:38:19.857" starttime="20180427 10:38:19.777"></status>
+<status status="PASS" endtime="20180427 11:16:53.136" starttime="20180427 11:16:52.153"></status>
 </kw>
-<status status="PASS" endtime="20180427 10:38:19.857" critical="yes" starttime="20180427 10:38:12.050"></status>
+<status status="PASS" endtime="20180427 11:16:53.136" critical="yes" starttime="20180427 11:16:41.422"></status>
 </test>
-<status status="PASS" endtime="20180427 10:38:19.860" starttime="20180427 10:38:11.379"></status>
+<test id="s1-t2" name="UI1.2">
+<kw name="2Add to Cart">
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>1.0 seconds</arg>
+</arguments>
+<status status="PASS" endtime="20180427 11:16:53.138" starttime="20180427 11:16:53.138"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>AddToCart</arg>
+</arguments>
+<msg timestamp="20180427 11:16:53.138" level="INFO">Clicking button 'AddToCart'.</msg>
+<status status="PASS" endtime="20180427 11:16:57.218" starttime="20180427 11:16:53.138"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:16:57.218" starttime="20180427 11:16:53.137"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:16:57.219" critical="yes" starttime="20180427 11:16:53.137"></status>
+</test>
+<test id="s1-t3" name="UI1.3">
+<kw name="3Shopping Cart Check">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>ProcessCheckOut</arg>
+</arguments>
+<msg timestamp="20180427 11:16:57.221" level="INFO">Clicking button 'ProcessCheckOut'.</msg>
+<status status="PASS" endtime="20180427 11:17:01.312" starttime="20180427 11:16:57.221"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:17:01.312" starttime="20180427 11:16:57.221"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:17:01.312" critical="yes" starttime="20180427 11:16:57.220"></status>
+</test>
+<test id="s1-t4" name="UI1.4">
+<kw name="4Fill Info">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://128.199.66.198:8080/ShippingAddress.html</arg>
+<arg>browser=gc</arg>
+</arguments>
+<msg timestamp="20180427 11:17:01.314" level="INFO">Opening browser 'gc' to base url 'http://128.199.66.198:8080/ShippingAddress.html'.</msg>
+<status status="PASS" endtime="20180427 11:17:06.012" starttime="20180427 11:17:01.313"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4FullName</arg>
+<arg>Sadathit Issamo สดาทิตย์ อิสโม</arg>
+</arguments>
+<msg timestamp="20180427 11:17:06.042" level="INFO">Typing text 'Sadathit Issamo สดาทิตย์ อิสโม' into text field '4FullName'.</msg>
+<status status="PASS" endtime="20180427 11:17:09.791" starttime="20180427 11:17:06.012"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4Address1</arg>
+<arg>111/222 Ladprow Soi.3 ลาดพร้าว ซ.3</arg>
+</arguments>
+<msg timestamp="20180427 11:17:09.791" level="INFO">Typing text '111/222 Ladprow Soi.3 ลาดพร้าว ซ.3' into text field '4Address1'.</msg>
+<status status="PASS" endtime="20180427 11:17:12.988" starttime="20180427 11:17:09.791"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4Address2</arg>
+<arg>Prompran3 Building อาคารพร้อมพันธ์3</arg>
+</arguments>
+<msg timestamp="20180427 11:17:12.990" level="INFO">Typing text 'Prompran3 Building อาคารพร้อมพันธ์3' into text field '4Address2'.</msg>
+<status status="PASS" endtime="20180427 11:17:16.194" starttime="20180427 11:17:12.989"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4City</arg>
+<arg>Ladprow ลาดพร้าว</arg>
+</arguments>
+<msg timestamp="20180427 11:17:16.195" level="INFO">Typing text 'Ladprow ลาดพร้าว' into text field '4City'.</msg>
+<status status="PASS" endtime="20180427 11:17:19.318" starttime="20180427 11:17:16.194"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4Province</arg>
+<arg>Bangkok กรุงเทพ</arg>
+</arguments>
+<msg timestamp="20180427 11:17:19.319" level="INFO">Typing text 'Bangkok กรุงเทพ' into text field '4Province'.</msg>
+<status status="PASS" endtime="20180427 11:17:22.492" starttime="20180427 11:17:19.319"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>4Postcode</arg>
+<arg>10540</arg>
+</arguments>
+<msg timestamp="20180427 11:17:22.492" level="INFO">Typing text '10540' into text field '4Postcode'.</msg>
+<status status="PASS" endtime="20180427 11:17:25.578" starttime="20180427 11:17:22.492"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:17:25.578" starttime="20180427 11:17:01.313"></status>
+</kw>
+<status status="PASS" endtime="20180427 11:17:25.579" critical="yes" starttime="20180427 11:17:01.313"></status>
+</test>
+<status status="PASS" endtime="20180427 11:17:25.580" starttime="20180427 11:16:40.887"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="1">Critical Tests</stat>
-<stat fail="0" pass="1">All Tests</stat>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="HOT6 UI1" pass="1">HOT6 UI1</stat>
+<stat fail="0" id="s1" name="HOT6 UI1" pass="4">HOT6 UI1</stat>
 </suite>
 </statistics>
 <errors>
