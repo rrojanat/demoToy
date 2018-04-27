@@ -11,10 +11,9 @@ import workshop.toy.repo.ToyRepo;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("rest")
+@RequestMapping("/rest")
 public class CartController {
 
     @Autowired
@@ -100,12 +99,27 @@ public class CartController {
         return cartDetailRepo.save(cartDetail);
     }
 
-    public void calculateCartDetailPrice(CartDetail cartDetail) {
+    @PutMapping("/cart/detail/{id}/qty")
+    @ResponseBody
+    public CartDetail updateCartDetailQty(@PathVariable("id")BigDecimal id, @RequestBody CartDetail newCartDetail) {
+        CartDetail currentCartDetail = cartDetailRepo.findById(id).get();
+        currentCartDetail.setQty(newCartDetail.getQty());
+        return cartDetailRepo.save(currentCartDetail);
+    }
+
+    @DeleteMapping ("/cart/detail/{id}")
+    @ResponseBody
+    public void deleteCartDetail(@PathVariable("id")BigDecimal id) {
+        CartDetail cartDetail = cartDetailRepo.findById(id).get();
+        cartDetailRepo.delete(cartDetail);
+    }
+
+    private void calculateCartDetailPrice(CartDetail cartDetail) {
         Toy toy = toyRepo.getToyById(cartDetail.getToyId());
         cartDetail.setDetailPrice(toy.getPrice().multiply(cartDetail.getQty()).setScale(2, BigDecimal.ROUND_HALF_UP));
     }
 
-    public void calculateCartPrice(Cart cart) {
+    private void calculateCartPrice(Cart cart) {
         List<CartDetail> cartDetailList = cartDetailRepo.findCartDetailByCartId(cart.getCartId());
         BigDecimal subTotal = new BigDecimal("0");
         BigDecimal shoppingFee = new BigDecimal("50");
