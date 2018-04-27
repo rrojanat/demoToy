@@ -8,8 +8,8 @@ UI1.1
   1Search All
   1Search by Criteria
   1Choose Toy
-#UI1.2
-#  2Add to Cart
+UI1.2
+  2Add to Cart
 #UI1.3
 #  3Shopping Cart Check
 #UI1.4
@@ -26,7 +26,7 @@ UI1.1
   Wait Until Element Is Enabled   ageCombo
   Click Button   searchButton
   #Wait Until Element Contains   tableToyResult_info  Showing 1 to 30 of 30 entries   1.0 seconds
-  Set Selenium Speed   0.3 seconds
+  #Set Selenium Speed   0.3 seconds
 
 1Search by Criteria
   Wait Until Element Contains   genderCombo   Neutral   1.0 seconds
@@ -34,16 +34,23 @@ UI1.1
   Select From List By Label   genderCombo   Neutral
   Select From List By Label   ageCombo   Baby
   Click Button   searchButton
-#  Table Cell Should Contain   tableToyResult   2   1   Dancing Alligator
-  Wait Until Element Contains   tableToyResult_info  Showing 1 to 4 of 4 entries   1.0 seconds
-  Set Selenium Speed   0.3 seconds
+  Wait Until Element Contains   tableToyResult   Dancing Alligator   10.0 seconds
+  #Table Cell Should Contain   tableToyResult   2   1   Dancing Alligator
+  #Wait Until Element Contains   tableToyResult_info  Showing 1 to 4 of 4 entries   1.0 seconds
+  #Set Selenium Speed   0.3 seconds
 
 1Choose Toy
+  Wait Until Element Contains   tableToyResult   Dancing Alligator   10.0 seconds
   Click Link   Dancing Alligator
 
-#2Add to Cart
-#  Set Selenium Speed   1.0 seconds
-#  Click Button   AddToCart
+2Add to Cart
+  Set Selenium Speed   1.0 seconds
+  #Wait Until Element Contains   2toyQty   1   10.0 seconds
+  Select From List By Label   2toyQty   3
+  Set Selenium Speed   1.0 seconds
+  #Wait Until Element Contains   2toyQty   3   50.0 seconds
+  Select From List By Label   2toyQty   1
+  Click Button   AddToCart
 
 #3Shopping Cart Check
 #  #Table Cell Should Contain   tableShoppingCart   3   3   100.00
